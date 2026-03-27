@@ -41,7 +41,6 @@
       overflow-x: hidden;
     }
 
-    /* ===== LIGHT STREAK BACKGROUND ===== */
     .bg-streaks {
       position: fixed;
       top: 0;
@@ -56,12 +55,8 @@
     }
 
     @keyframes streamBg {
-      0% {
-        background-position: 0% 0%;
-      }
-      100% {
-        background-position: -200% 0%;
-      }
+      0% { background-position: 0% 0%; }
+      100% { background-position: -200% 0%; }
     }
 
     .streak {
@@ -72,23 +67,12 @@
     }
 
     @keyframes streak {
-      0% {
-        left: -100%;
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        left: 100%;
-        opacity: 0;
-      }
+      0% { left: -100%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
     }
 
-    /* ===== CONTAINER ===== */
     .container {
       width: min(1200px, calc(100% - 40px));
       margin: 0 auto;
@@ -102,7 +86,6 @@
       transition: all 0.3s ease;
     }
 
-    /* ===== NAVIGATION ===== */
     .nav {
       position: fixed;
       top: 0;
@@ -216,7 +199,6 @@
       transform: rotate(-45deg) translate(8px, -8px);
     }
 
-    /* ===== MOBILE MENU ===== */
     .mobile-menu {
       display: none;
       position: fixed;
@@ -252,12 +234,10 @@
       color: var(--accent-primary);
     }
 
-    /* ===== BODY PADDING ===== */
     body {
       padding-top: 80px;
     }
 
-    /* ===== CONTENT SECTION ===== */
     .content-section {
       padding: 100px 0;
       position: relative;
@@ -313,8 +293,7 @@
       line-height: 1.8;
     }
 
-    .content-main ul,
-    .content-main ol {
+    .content-main ul, .content-main ol {
       margin-left: 20px;
       margin-bottom: 20px;
       color: var(--text-secondary);
@@ -326,7 +305,6 @@
       line-height: 1.8;
     }
 
-    /* ===== FOOTER ===== */
     footer {
       border-top: 1px solid var(--border-color);
       padding: 50px 0;
@@ -381,57 +359,21 @@
       font-size: 14px;
     }
 
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .content-main {
-        padding: 30px;
-      }
-
-      .brand img {
-        height: 40px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .content-main { padding: 30px; }
+      .brand img { height: 40px; }
     }
   </style>
 </head>
 <body>
-  <!-- LIGHT STREAKS BACKGROUND -->
   <div class="bg-streaks">
     <div class="streak" style="top: 20%; animation-delay: 0s;"></div>
     <div class="streak" style="top: 40%; animation-delay: 2s;"></div>
@@ -439,7 +381,6 @@
     <div class="streak" style="top: 80%; animation-delay: 6s;"></div>
   </div>
 
-  <!-- NAVIGATION -->
   <nav class="nav" id="navBar">
     <div class="container">
       <div class="nav-inner">
@@ -454,15 +395,12 @@
           <a href="index.html#contact">Contato</a>
         </div>
         <button class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </nav>
 
-  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html#portfolio" onclick="closeMobileMenu()">Portfolio</a>
     <a href="index.html#testimonials" onclick="closeMobileMenu()">Clientes</a>
@@ -470,7 +408,6 @@
     <a href="index.html#contact" onclick="closeMobileMenu()">Contato</a>
   </div>
 
-  <!-- CONTENT -->
   <main>
     <section class="content-section">
       <div class="container">
@@ -481,14 +418,14 @@
 
         <div class="content-main">
           <h2>1. Introdução</h2>
-          <p>A V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA (doravante "Empresa", "nós", "nosso/a" ou "Serviço") respeita a privacidade de seus usuários ("você" ou "usuário") e está comprometida em ser transparente sobre as práticas de coleta e uso de dados.</p>
+          <p>A V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA respeita a privacidade de seus usuários e está comprometida em ser transparente sobre as práticas de coleta e uso de dados.</p>
           <p>Esta Política de Privacidade explica como coletamos, usamos, divulgamos e salvaguardamos suas informações quando você visita nosso site e utiliza nossos serviços.</p>
 
           <h2>2. Informações que Coletamos</h2>
           <p>Podemos coletar informações sobre você de diferentes formas:</p>
           <ul>
-            <li><strong>Informações que você fornece diretamente:</strong> Nome completo, endereço de e-mail, número de telefone, empresa, cargo e qualquer outra informação que você opte por compartilhar através de formulários, chat ou contato direto.</li>
-            <li><strong>Informações coletadas automaticamente:</strong> Tipo de navegador, endereço IP, páginas visitadas, tempo gasto no site, dados de cliques e navegação, através de cookies e tecnologias similares.</li>
+            <li><strong>Informações que você fornece diretamente:</strong> Nome completo, endereço de e-mail, número de telefone, empresa, cargo e qualquer outra informação que você opte por compartilhar através de formulários.</li>
+            <li><strong>Informações coletadas automaticamente:</strong> Tipo de navegador, endereço IP, páginas visitadas, tempo gasto no site, dados de cliques e navegação, através de cookies.</li>
             <li><strong>Informações de terceiros:</strong> Podemos receber informações sobre você de parceiros comerciais ou serviços de análise.</li>
           </ul>
 
@@ -497,27 +434,19 @@
           <ul>
             <li>Fornecer, manter e melhorar nossos serviços</li>
             <li>Responder a suas dúvidas e solicitações</li>
-            <li>Enviar comunicações comerciais, atualizações e ofertas (com seu consentimento)</li>
+            <li>Enviar comunicações comerciais e atualizações (com seu consentimento)</li>
             <li>Análise de uso para entender como você interage com nossos serviços</li>
             <li>Conformidade com obrigações legais</li>
             <li>Prevenção de fraude e segurança</li>
           </ul>
 
           <h2>4. Compartilhamento de Informações</h2>
-          <p>Não compartilhamos suas informações pessoais com terceiros sem seu consentimento, exceto quando:</p>
-          <ul>
-            <li>Exigido por lei ou autoridades competentes</li>
-            <li>Necessário para prestar nossos serviços (com parceiros de confiança)</li>
-            <li>Você tenha dado consentimento explícito</li>
-          </ul>
+          <p>Não compartilhamos suas informações pessoais com terceiros sem seu consentimento, exceto quando exigido por lei ou necessário para prestar nossos serviços.</p>
 
           <h2>5. Segurança de Dados</h2>
-          <p>Implementamos medidas técnicas e organizacionais adequadas para proteger suas informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição. No entanto, nenhum método de transmissão pela Internet é 100% seguro, portanto não podemos garantir segurança absoluta.</p>
+          <p>Implementamos medidas técnicas e organizacionais adequadas para proteger suas informações pessoais. No entanto, nenhum método de transmissão pela Internet é 100% seguro.</p>
 
-          <h2>6. Retenção de Dados</h2>
-          <p>Mantemos suas informações pessoais apenas enquanto necessário para os fins descritos nesta política ou conforme exigido por lei. Você pode solicitar a exclusão de seus dados a qualquer momento através do email de contato.</p>
-
-          <h2>7. Seus Direitos</h2>
+          <h2>6. Seus Direitos</h2>
           <p>De acordo com a Lei Geral de Proteção de Dados (LGPD), você tem direito a:</p>
           <ul>
             <li>Acessar seus dados pessoais</li>
@@ -525,33 +454,28 @@
             <li>Solicitar a exclusão de seus dados</li>
             <li>Limitar o tratamento de seus dados</li>
             <li>Revogar seu consentimento</li>
-            <li>Portabilidade de dados</li>
           </ul>
-          <p>Para exercer esses direitos, entre em contato conosco através do email: adm@vctechsc.com</p>
+          <p>Para exercer esses direitos, entre em contato: adm@vctechsc.com</p>
 
-          <h2>8. Cookies e Tecnologias Similares</h2>
-          <p>Nosso site usa cookies para melhorar sua experiência. Cookies são pequenos arquivos armazenados em seu dispositivo que ajudam a personalizar o conteúdo e melhorar a funcionalidade. Você pode controlar os cookies através das configurações do seu navegador.</p>
+          <h2>7. Cookies</h2>
+          <p>Nosso site usa cookies para melhorar sua experiência. Você pode controlar os cookies através das configurações do seu navegador.</p>
 
-          <h2>9. Alterações a Esta Política</h2>
-          <p>Podemos atualizar esta Política de Privacidade periodicamente para refletir mudanças em nossas práticas ou por outras razões operacionais, legais ou regulatórias. A data da última atualização será indicada no topo desta página. Recomendamos que você revise esta política regularmente.</p>
+          <h2>8. Alterações a Esta Política</h2>
+          <p>Podemos atualizar esta Política de Privacidade periodicamente. Recomendamos que você revise esta política regularmente.</p>
 
-          <h2>10. Informações de Contato</h2>
-          <p>Se você tiver dúvidas, preocupações ou desejar exercer seus direitos de privacidade, entre em contato conosco:</p>
+          <h2>9. Contato</h2>
+          <p>Se você tiver dúvidas sobre esta política, entre em contato:</p>
           <ul>
             <li><strong>Email:</strong> adm@vctechsc.com</li>
             <li><strong>WhatsApp:</strong> +55 47 9770-1300</li>
-            <li><strong>Endereço:</strong> Av Osmar de Souza Nunes, 365 - Sala 01, Pioneiros, Balneário Camboriú - SC, 88.331-070</li>
+            <li><strong>Endereço:</strong> Av Osmar de Souza Nunes, 365 - Balneário Camboriú - SC</li>
             <li><strong>CNPJ:</strong> 58.313.203/0001-18</li>
           </ul>
-
-          <h2>11. Responsável pela Proteção de Dados</h2>
-          <p>A empresa V C TECH é responsável pelas práticas de privacidade descritas nesta política e está comprometida em manter a conformidade com todas as leis de proteção de dados aplicáveis.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -560,8 +484,8 @@
           <p>CNPJ: 58.313.203/0001-18</p>
           <p>Empresa com situação cadastral ativa</p>
           <div class="footer-links">
-            <a href="politica-privacidade.html">Política de Privacidade</a>
-            <a href="termos-servico.html">Termos de Serviço</a>
+            <a href="politica-de-privacidade.html">Política de Privacidade</a>
+            <a href="termos-de-servico.html">Termos de Serviço</a>
           </div>
         </div>
         <div>
@@ -578,7 +502,6 @@
   </footer>
 
   <script>
-    // Hamburger Menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -592,7 +515,6 @@
       mobileMenu.classList.remove('active');
     }
 
-    // Hide/Show Navbar on scroll
     let lastScrollTop = 0;
     const nav = document.getElementById('navBar');
 
