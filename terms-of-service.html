@@ -41,7 +41,6 @@
       overflow-x: hidden;
     }
 
-    /* ===== LIGHT STREAK BACKGROUND ===== */
     .bg-streaks {
       position: fixed;
       top: 0;
@@ -56,12 +55,8 @@
     }
 
     @keyframes streamBg {
-      0% {
-        background-position: 0% 0%;
-      }
-      100% {
-        background-position: -200% 0%;
-      }
+      0% { background-position: 0% 0%; }
+      100% { background-position: -200% 0%; }
     }
 
     .streak {
@@ -72,23 +67,12 @@
     }
 
     @keyframes streak {
-      0% {
-        left: -100%;
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        left: 100%;
-        opacity: 0;
-      }
+      0% { left: -100%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
     }
 
-    /* ===== CONTAINER ===== */
     .container {
       width: min(1200px, calc(100% - 40px));
       margin: 0 auto;
@@ -102,7 +86,6 @@
       transition: all 0.3s ease;
     }
 
-    /* ===== NAVIGATION ===== */
     .nav {
       position: fixed;
       top: 0;
@@ -216,7 +199,6 @@
       transform: rotate(-45deg) translate(8px, -8px);
     }
 
-    /* ===== MOBILE MENU ===== */
     .mobile-menu {
       display: none;
       position: fixed;
@@ -252,12 +234,10 @@
       color: var(--accent-primary);
     }
 
-    /* ===== BODY PADDING ===== */
     body {
       padding-top: 80px;
     }
 
-    /* ===== CONTENT SECTION ===== */
     .content-section {
       padding: 100px 0;
       position: relative;
@@ -313,8 +293,7 @@
       line-height: 1.8;
     }
 
-    .content-main ul,
-    .content-main ol {
+    .content-main ul, .content-main ol {
       margin-left: 20px;
       margin-bottom: 20px;
       color: var(--text-secondary);
@@ -326,7 +305,6 @@
       line-height: 1.8;
     }
 
-    /* ===== FOOTER ===== */
     footer {
       border-top: 1px solid var(--border-color);
       padding: 50px 0;
@@ -381,57 +359,16 @@
       font-size: 14px;
     }
 
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .content-main {
-        padding: 30px;
-      }
-
-      .brand img {
-        height: 40px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .content-main { padding: 30px; }
+      .brand img { height: 40px; }
     }
   </style>
 </head>
 <body>
-  <!-- LIGHT STREAKS BACKGROUND -->
   <div class="bg-streaks">
     <div class="streak" style="top: 20%; animation-delay: 0s;"></div>
     <div class="streak" style="top: 40%; animation-delay: 2s;"></div>
@@ -439,7 +376,6 @@
     <div class="streak" style="top: 80%; animation-delay: 6s;"></div>
   </div>
 
-  <!-- NAVIGATION -->
   <nav class="nav" id="navBar">
     <div class="container">
       <div class="nav-inner">
@@ -454,15 +390,12 @@
           <a href="index.html#contact">Contato</a>
         </div>
         <button class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </nav>
 
-  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html#portfolio" onclick="closeMobileMenu()">Portfolio</a>
     <a href="index.html#testimonials" onclick="closeMobileMenu()">Clientes</a>
@@ -470,7 +403,6 @@
     <a href="index.html#contact" onclick="closeMobileMenu()">Contato</a>
   </div>
 
-  <!-- CONTENT -->
   <main>
     <section class="content-section">
       <div class="container">
@@ -481,7 +413,7 @@
 
         <div class="content-main">
           <h2>1. Aceite dos Termos</h2>
-          <p>Ao acessar e utilizar o site e serviços da V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA, você concorda em estar vinculado por estes Termos de Serviço. Se não concordar com alguma parte destes termos, não use nossos serviços.</p>
+          <p>Ao acessar e utilizar o site e serviços da V C TECH, você concorda em estar vinculado por estes Termos de Serviço. Se não concordar, não use nossos serviços.</p>
 
           <h2>2. Descrição dos Serviços</h2>
           <p>A V C TECH oferece serviços de:</p>
@@ -491,7 +423,7 @@
             <li>Soluções tecnológicas e digitais</li>
             <li>Treinamento e desenvolvimento empresarial</li>
           </ul>
-          <p>Nos reservamos o direito de modificar ou descontinuar serviços a qualquer momento, com ou sem aviso prévio.</p>
+          <p>Nos reservamos o direito de modificar ou descontinuar serviços a qualquer momento.</p>
 
           <h2>3. Direitos e Responsabilidades do Usuário</h2>
           <p>Você concorda em:</p>
@@ -512,57 +444,45 @@
             <li>Acesso não autorizado ou violação de segurança</li>
             <li>Interferir com serviços ou infraestrutura</li>
             <li>Spam ou comunicações indesejadas</li>
-            <li>Reprodução não autorizada de conteúdo protegido</li>
           </ul>
 
           <h2>5. Propriedade Intelectual</h2>
-          <p>Todo o conteúdo, designs, textos, gráficos, logos e outros materiais no site são propriedade intelectual da V C TECH ou de seus fornecedores. Você não pode reproduzir, distribuir ou transmitir esse conteúdo sem permissão expressa por escrito.</p>
+          <p>Todo o conteúdo do site é propriedade intelectual da V C TECH. Você não pode reproduzir ou distribuir sem permissão expressa por escrito.</p>
 
           <h2>6. Limitações de Responsabilidade</h2>
-          <p>A V C TECH não será responsável por:</p>
-          <ul>
-            <li>Danos indiretos, incidentais, especiais ou consequenciais</li>
-            <li>Perda de receita, lucro ou dados</li>
-            <li>Interrupção de negócios</li>
-            <li>Danos causados por terceiros ou fatores externos</li>
-          </ul>
-          <p>Nossa responsabilidade máxima será limitada ao valor pago pelos serviços.</p>
+          <p>A V C TECH não será responsável por danos indiretos, incidentais, especiais ou consequenciais. Nossa responsabilidade máxima será limitada ao valor pago pelos serviços.</p>
 
           <h2>7. Isenção de Garantias</h2>
-          <p>Os serviços são fornecidos "CONFORME ESTÃO" sem garantias de qualquer tipo. Isentamos qualquer garantia expressa ou implícita, incluindo garantias de comercialização, adequação para um propósito específico ou não-violação.</p>
+          <p>Os serviços são fornecidos "CONFORME ESTÃO" sem garantias de qualquer tipo. Isentamos qualquer garantia expressa ou implícita.</p>
 
           <h2>8. Indenização</h2>
-          <p>Você concorda em indenizar e isentar a V C TECH de qualquer reivindicação, dano, perda ou despesa (incluindo honorários advocatícios) resultantes de seu uso dos serviços ou violação destes Termos.</p>
+          <p>Você concorda em indenizar a V C TECH de qualquer reivindicação, dano, perda ou despesa resultantes de seu uso dos serviços.</p>
 
           <h2>9. Links de Terceiros</h2>
-          <p>Nosso site pode conter links para sites de terceiros. Não somos responsáveis pelo conteúdo, precisão ou práticas de privacidade de sites externos. Acesse sites de terceiros por sua conta e risco.</p>
+          <p>Nosso site pode conter links para sites de terceiros. Não somos responsáveis pelo conteúdo ou práticas desses sites.</p>
 
           <h2>10. Modificações dos Termos</h2>
-          <p>Reservamos o direito de modificar estes Termos a qualquer momento. Alterações importantes serão comunicadas com antecedência quando possível. Seu uso contínuo dos serviços após modificações constitui aceitação dos novos termos.</p>
+          <p>Reservamos o direito de modificar estes Termos a qualquer momento. Seu uso contínuo dos serviços constitui aceitação.</p>
 
           <h2>11. Rescisão</h2>
-          <p>Podemos rescindir ou suspender sua conta e acesso aos serviços a qualquer momento, com ou sem causa, com ou sem aviso prévio.</p>
+          <p>Podemos rescindir sua conta a qualquer momento, com ou sem causa.</p>
 
-          <h2>12. Lei Aplicável e Jurisdição</h2>
-          <p>Estes Termos de Serviço são regidos pelas leis da República Federativa do Brasil. Qualquer disputa será resolvida nos tribunais competentes de Santa Catarina.</p>
+          <h2>12. Lei Aplicável</h2>
+          <p>Estes Termos são regidos pelas leis da República Federativa do Brasil e resolvidos nos tribunais de Santa Catarina.</p>
 
           <h2>13. Contato</h2>
-          <p>Se você tiver dúvidas ou preocupações sobre estes Termos de Serviço, entre em contato conosco:</p>
+          <p>Se você tiver dúvidas sobre estes Termos, entre em contato:</p>
           <ul>
             <li><strong>Email:</strong> adm@vctechsc.com</li>
             <li><strong>WhatsApp:</strong> +55 47 9770-1300</li>
-            <li><strong>Endereço:</strong> Av Osmar de Souza Nunes, 365 - Sala 01, Pioneiros, Balneário Camboriú - SC, 88.331-070</li>
+            <li><strong>Endereço:</strong> Av Osmar de Souza Nunes, 365 - Balneário Camboriú - SC</li>
             <li><strong>CNPJ:</strong> 58.313.203/0001-18</li>
           </ul>
-
-          <h2>14. Disposições Finais</h2>
-          <p>Se alguma disposição destes Termos for considerada inválida ou inexequível, as disposições restantes permanecerão em vigor. O não exercício de qualquer direito não constitui renúncia desse direito.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -571,8 +491,8 @@
           <p>CNPJ: 58.313.203/0001-18</p>
           <p>Empresa com situação cadastral ativa</p>
           <div class="footer-links">
-            <a href="politica-privacidade.html">Política de Privacidade</a>
-            <a href="termos-servico.html">Termos de Serviço</a>
+            <a href="politica-de-privacidade.html">Política de Privacidade</a>
+            <a href="termos-de-servico.html">Termos de Serviço</a>
           </div>
         </div>
         <div>
@@ -589,7 +509,6 @@
   </footer>
 
   <script>
-    // Hamburger Menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -603,7 +522,6 @@
       mobileMenu.classList.remove('active');
     }
 
-    // Hide/Show Navbar on scroll
     let lastScrollTop = 0;
     const nav = document.getElementById('navBar');
 
