@@ -1,41 +1,610 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidade</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade | V C TECH</title>
+  <meta name="description" content="Política de Privacidade da V C TECH - Conheça como protegemos seus dados pessoais." />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0f0f0f;
+      --bg-secondary: #1a1a1a;
+      --bg-tertiary: #242424;
+      --accent-primary: #2563eb;
+      --accent-secondary: #3b82f6;
+      --accent-light: #60a5fa;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: rgba(148, 163, 184, 0.1);
+      --shadow-hard: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #000;
+      color: var(--text-primary);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ===== LIGHT STREAK BACKGROUND ===== */
+    .bg-streaks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(90deg, #000 0%, #0a0e27 25%, #000 50%, #0a0e27 75%, #000 100%);
+      background-size: 200% 100%;
+      animation: streamBg 20s linear infinite;
+    }
+
+    @keyframes streamBg {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: -200% 0%;
+      }
+    }
+
+    .streak {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.6), transparent);
+      animation: streak 8s linear infinite;
+    }
+
+    @keyframes streak {
+      0% {
+        left: -100%;
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        left: 100%;
+        opacity: 0;
+      }
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 15, 15, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .nav.hidden {
+      transform: translateY(-100%);
+    }
+
+    .nav-inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .brand img {
+      height: 50px;
+      width: auto;
+      transition: filter 0.3s ease;
+    }
+
+    .brand:hover img {
+      filter: brightness(1.2) drop-shadow(0 0 10px rgba(37, 99, 235, 0.5));
+    }
+
+    .brand-text {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 10px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(12px, 12px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 0;
+      width: 100%;
+      max-width: 300px;
+      height: calc(100vh - 80px);
+      background: rgba(15, 15, 15, 0.98);
+      border-left: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+      z-index: 99;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .mobile-menu.active {
+      display: block;
+      transform: translateX(0);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 16px 24px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent-primary);
+    }
+
+    /* ===== BODY PADDING ===== */
+    body {
+      padding-top: 80px;
+    }
+
+    /* ===== CONTENT SECTION ===== */
+    .content-section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 10;
+      min-height: calc(100vh - 80px);
+    }
+
+    .content-header {
+      margin-bottom: 60px;
+    }
+
+    .content-header h1 {
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .content-header p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 800px;
+    }
+
+    .content-main {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.08));
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 50px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .content-main h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: var(--accent-primary);
+    }
+
+    .content-main h2:first-child {
+      margin-top: 0;
+    }
+
+    .content-main p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .content-main ul,
+    .content-main ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: var(--text-secondary);
+    }
+
+    .content-main li {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 50px 0;
+      color: var(--text-secondary);
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--accent-primary);
+      transition: all 0.3s ease;
+      padding: 5px 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-light);
+      border-bottom-color: var(--accent-light);
+    }
+
+    footer h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .footer-divider {
+      border-top: 1px solid var(--border-color);
+      padding-top: 30px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-main {
+        padding: 30px;
+      }
+
+      .brand img {
+        height: 40px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Política de Privacidade da V C TECH</h1>
-    <p>A V C TECH respeita a sua privacidade e se compromete a proteger suas informações pessoais. Esta Política de Privacidade explica como coletamos, usamos e divulgamos suas informações quando você utiliza nossos serviços.</p>
+  <!-- LIGHT STREAKS BACKGROUND -->
+  <div class="bg-streaks">
+    <div class="streak" style="top: 20%; animation-delay: 0s;"></div>
+    <div class="streak" style="top: 40%; animation-delay: 2s;"></div>
+    <div class="streak" style="top: 60%; animation-delay: 4s;"></div>
+    <div class="streak" style="top: 80%; animation-delay: 6s;"></div>
+  </div>
 
-    <h2>1. Informações Que Coletamos</h2>
-    <p>Coletamos informações que você nos fornece diretamente, como seu nome, endereço de e-mail e outras informações que você decide compartilhar.</p>
+  <!-- NAVIGATION -->
+  <nav class="nav" id="navBar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="brand">
+          <img src="logo.png" alt="V C TECH Logo">
+          <span class="brand-text">V C TECH</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html#portfolio">Portfolio</a>
+          <a href="index.html#testimonials">Clientes</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="index.html#contact">Contato</a>
+        </div>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-    <h2>2. Uso das Informações</h2>
-    <p>Usamos suas informações para:</p>
-    <ul>
-        <li>Fornecer e manter nossos serviços;</li>
-        <li>Informá-lo sobre mudanças em nossos serviços;</li>
-        <li>Analisar o uso de nossos serviços;</li>
-        <li>Responder a seus comentários e perguntas.</li>
-    </ul>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#portfolio" onclick="closeMobileMenu()">Portfolio</a>
+    <a href="index.html#testimonials" onclick="closeMobileMenu()">Clientes</a>
+    <a href="index.html#faq" onclick="closeMobileMenu()">FAQ</a>
+    <a href="index.html#contact" onclick="closeMobileMenu()">Contato</a>
+  </div>
 
-    <h2>3. Compartilhamento de Informações</h2>
-    <p>Não compartilhamos suas informações pessoais com terceiros, exceto conforme necessário para fornecer nossos serviços ou conforme exigido por lei.</p>
+  <!-- CONTENT -->
+  <main>
+    <section class="content-section">
+      <div class="container">
+        <div class="content-header">
+          <h1>Política de Privacidade</h1>
+          <p>Entenda como coletamos, usamos e protegemos seus dados pessoais</p>
+        </div>
 
-    <h2>4. Segurança</h2>
-    <p>Tomamos medidas para proteger suas informações pessoais, mas não podemos garantir a segurança absoluta, pois nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro.</p>
+        <div class="content-main">
+          <h2>1. Introdução</h2>
+          <p>A V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA (doravante "Empresa", "nós", "nosso/a" ou "Serviço") respeita a privacidade de seus usuários ("você" ou "usuário") e está comprometida em ser transparente sobre as práticas de coleta e uso de dados.</p>
+          <p>Esta Política de Privacidade explica como coletamos, usamos, divulgamos e salvaguardamos suas informações quando você visita nosso site e utiliza nossos serviços.</p>
 
-    <h2>5. Seus Direitos</h2>
-    <p>Você tem o direito de acessar, corrigir ou excluir suas informações pessoais. Entre em contato conosco para exercer esses direitos.</p>
+          <h2>2. Informações que Coletamos</h2>
+          <p>Podemos coletar informações sobre você de diferentes formas:</p>
+          <ul>
+            <li><strong>Informações que você fornece diretamente:</strong> Nome completo, endereço de e-mail, número de telefone, empresa, cargo e qualquer outra informação que você opte por compartilhar através de formulários, chat ou contato direto.</li>
+            <li><strong>Informações coletadas automaticamente:</strong> Tipo de navegador, endereço IP, páginas visitadas, tempo gasto no site, dados de cliques e navegação, através de cookies e tecnologias similares.</li>
+            <li><strong>Informações de terceiros:</strong> Podemos receber informações sobre você de parceiros comerciais ou serviços de análise.</li>
+          </ul>
 
-    <h2>6. Alterações a Esta Política</h2>
-    <p>Podemos atualizar nossa Política de Privacidade de tempos em tempos. Notificaremos você sobre quaisquer alterações publicando a nova Política de Privacidade nesta página.</p>
+          <h2>3. Como Usamos Suas Informações</h2>
+          <p>Utilizamos as informações coletadas para:</p>
+          <ul>
+            <li>Fornecer, manter e melhorar nossos serviços</li>
+            <li>Responder a suas dúvidas e solicitações</li>
+            <li>Enviar comunicações comerciais, atualizações e ofertas (com seu consentimento)</li>
+            <li>Análise de uso para entender como você interage com nossos serviços</li>
+            <li>Conformidade com obrigações legais</li>
+            <li>Prevenção de fraude e segurança</li>
+          </ul>
 
-    <h2>7. Contato</h2>
-    <p>Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato conosco através do e-mail: contato@vctech.com</p>
+          <h2>4. Compartilhamento de Informações</h2>
+          <p>Não compartilhamos suas informações pessoais com terceiros sem seu consentimento, exceto quando:</p>
+          <ul>
+            <li>Exigido por lei ou autoridades competentes</li>
+            <li>Necessário para prestar nossos serviços (com parceiros de confiança)</li>
+            <li>Você tenha dado consentimento explícito</li>
+          </ul>
 
-    <p>Data da última atualização: 2026-03-27</p>
+          <h2>5. Segurança de Dados</h2>
+          <p>Implementamos medidas técnicas e organizacionais adequadas para proteger suas informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição. No entanto, nenhum método de transmissão pela Internet é 100% seguro, portanto não podemos garantir segurança absoluta.</p>
+
+          <h2>6. Retenção de Dados</h2>
+          <p>Mantemos suas informações pessoais apenas enquanto necessário para os fins descritos nesta política ou conforme exigido por lei. Você pode solicitar a exclusão de seus dados a qualquer momento através do email de contato.</p>
+
+          <h2>7. Seus Direitos</h2>
+          <p>De acordo com a Lei Geral de Proteção de Dados (LGPD), você tem direito a:</p>
+          <ul>
+            <li>Acessar seus dados pessoais</li>
+            <li>Corrigir dados imprecisos</li>
+            <li>Solicitar a exclusão de seus dados</li>
+            <li>Limitar o tratamento de seus dados</li>
+            <li>Revogar seu consentimento</li>
+            <li>Portabilidade de dados</li>
+          </ul>
+          <p>Para exercer esses direitos, entre em contato conosco através do email: adm@vctechsc.com</p>
+
+          <h2>8. Cookies e Tecnologias Similares</h2>
+          <p>Nosso site usa cookies para melhorar sua experiência. Cookies são pequenos arquivos armazenados em seu dispositivo que ajudam a personalizar o conteúdo e melhorar a funcionalidade. Você pode controlar os cookies através das configurações do seu navegador.</p>
+
+          <h2>9. Alterações a Esta Política</h2>
+          <p>Podemos atualizar esta Política de Privacidade periodicamente para refletir mudanças em nossas práticas ou por outras razões operacionais, legais ou regulatórias. A data da última atualização será indicada no topo desta página. Recomendamos que você revise esta política regularmente.</p>
+
+          <h2>10. Informações de Contato</h2>
+          <p>Se você tiver dúvidas, preocupações ou desejar exercer seus direitos de privacidade, entre em contato conosco:</p>
+          <ul>
+            <li><strong>Email:</strong> adm@vctechsc.com</li>
+            <li><strong>WhatsApp:</strong> +55 47 9770-1300</li>
+            <li><strong>Endereço:</strong> Av Osmar de Souza Nunes, 365 - Sala 01, Pioneiros, Balneário Camboriú - SC, 88.331-070</li>
+            <li><strong>CNPJ:</strong> 58.313.203/0001-18</li>
+          </ul>
+
+          <h2>11. Responsável pela Proteção de Dados</h2>
+          <p>A empresa V C TECH é responsável pelas práticas de privacidade descritas nesta política e está comprometida em manter a conformidade com todas as leis de proteção de dados aplicáveis.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</h4>
+          <p>CNPJ: 58.313.203/0001-18</p>
+          <p>Empresa com situação cadastral ativa</p>
+          <div class="footer-links">
+            <a href="politica-privacidade.html">Política de Privacidade</a>
+            <a href="termos-servico.html">Termos de Serviço</a>
+          </div>
+        </div>
+        <div>
+          <h4>Localização</h4>
+          <p>Av Osmar de Souza Nunes, 365</p>
+          <p>Sala 01, Pioneiros</p>
+          <p>Balneário Camboriú - SC, 88.331-070</p>
+        </div>
+      </div>
+      <div class="footer-divider">
+        <p>&copy; 2026 V C TECH. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+
+    // Hide/Show Navbar on scroll
+    let lastScrollTop = 0;
+    const nav = document.getElementById('navBar');
+
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.scrollY;
+      if (currentScroll > lastScrollTop && currentScroll > 100) {
+        nav.classList.add('hidden');
+      } else {
+        nav.classList.remove('hidden');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, { passive: true });
+  </script>
 </body>
 </html>
