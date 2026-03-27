@@ -45,55 +45,50 @@
       overflow-x: hidden;
     }
 
-    /* ===== ANIMATED BACKGROUND ===== */
-    .bg-grid {
+    /* ===== PARALLAX BG LOGOS ===== */
+    .parallax-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: 
-        linear-gradient(0deg, transparent 24%, rgba(37, 99, 235, 0.05) 25%, rgba(37, 99, 235, 0.05) 26%, transparent 27%, transparent 74%, rgba(37, 99, 235, 0.05) 75%, rgba(37, 99, 235, 0.05) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(37, 99, 235, 0.05) 25%, rgba(37, 99, 235, 0.05) 26%, transparent 27%, transparent 74%, rgba(37, 99, 235, 0.05) 75%, rgba(37, 99, 235, 0.05) 76%, transparent 77%, transparent);
-      background-size: 50px 50px;
       pointer-events: none;
-      opacity: 0.3;
       z-index: 1;
+      overflow: hidden;
     }
 
-    .particle {
-      position: fixed;
-      pointer-events: none;
-      z-index: 2;
+    .parallax-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: var(--opacity);
     }
 
-    .particle-1 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.15), transparent);
-      top: 5%;
-      left: 5%;
-      animation: float 20s infinite ease-in-out;
-      border-radius: 50%;
-      filter: blur(80px);
+    .logo-item {
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><text x="50" y="100" font-size="80" font-weight="bold" fill="rgba(37,99,235,var(--fill))">VC</text></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: drop-shadow(0 0 20px rgba(37, 99, 235, var(--glow)));
+      animation: float-logo var(--duration) infinite ease-in-out;
     }
 
-    .particle-2 {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent);
-      top: 60%;
-      right: 10%;
-      animation: float 25s infinite ease-in-out reverse;
-      border-radius: 50%;
-      filter: blur(80px);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) translateX(0px); }
-      25% { transform: translateY(-40px) translateX(30px); }
-      50% { transform: translateY(-80px) translateX(-30px); }
-      75% { transform: translateY(-40px) translateX(40px); }
+    @keyframes float-logo {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      25% {
+        transform: translateY(-20px) translateX(10px);
+      }
+      50% {
+        transform: translateY(-40px) translateX(-10px);
+      }
+      75% {
+        transform: translateY(-20px) translateX(15px);
+      }
     }
 
     /* ===== CONTAINER ===== */
@@ -123,6 +118,15 @@
       height: 80px;
       display: flex;
       align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nav.hide {
+      transform: translateY(-100%);
+    }
+
+    .nav.show {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .nav-inner {
@@ -170,6 +174,7 @@
       font-weight: 500;
       color: var(--text-secondary);
       position: relative;
+      transition: color 0.3s ease;
     }
 
     .nav-links a::after {
@@ -183,8 +188,71 @@
       transition: width 0.3s ease;
     }
 
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
     .nav-links a:hover::after {
       width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(10px, 10px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 0;
+      width: 250px;
+      height: calc(100vh - 80px);
+      background: var(--bg-secondary);
+      border-left: 1px solid var(--border-color);
+      z-index: 99;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 16px 24px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent-primary);
     }
 
     /* ===== BODY PADDING ===== */
@@ -256,6 +324,26 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:active::before {
+      width: 300px;
+      height: 300px;
     }
 
     .btn-primary {
@@ -857,11 +945,11 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .nav-links {
-        gap: 20px;
+        display: none;
       }
 
-      .nav-links a {
-        font-size: 12px;
+      .hamburger {
+        display: flex;
       }
 
       .footer-grid {
@@ -879,17 +967,19 @@
       .brand img {
         height: 40px;
       }
+
+      .parallax-layer {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- ANIMATED BG -->
-  <div class="bg-grid"></div>
-  <div class="particle particle-1"></div>
-  <div class="particle particle-2"></div>
+  <!-- PARALLAX BACKGROUND LOGOS -->
+  <div class="parallax-bg" id="parallaxBg"></div>
 
   <!-- NAVIGATION -->
-  <nav class="nav">
+  <nav class="nav" id="navBar">
     <div class="container">
       <div class="nav-inner">
         <a href="#" class="brand">
@@ -897,14 +987,27 @@
           <span class="brand-text">V C TECH</span>
         </a>
         <div class="nav-links">
-          <a href="#portfolio">📊 Portfolio</a>
-          <a href="#testimonials">⭐ Clientes</a>
-          <a href="#faq">❓ FAQ</a>
-          <a href="#contact">📞 Contato</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#testimonials">Clientes</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contato</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </div>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#portfolio">Portfolio</a>
+    <a href="#testimonials">Clientes</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contato</a>
+  </div>
 
   <main>
     <!-- HERO SECTION -->
@@ -1047,7 +1150,7 @@
                 <p>Coordenadora de Operações</p>
               </div>
             </div>
-            <div class="testimonial-stars">★★★★��</div>
+            <div class="testimonial-stars">★★★★★</div>
             <p class="testimonial-text">"Implementação ágil, suporte contínuo e resultados tangibilizados. Superaram nossas expectativas!"</p>
           </div>
         </div>
@@ -1193,6 +1296,85 @@
   </footer>
 
   <script>
+    // Parallax Background Setup
+    function createParallaxLogos() {
+      const parallaxBg = document.getElementById('parallaxBg');
+      const logoSizes = [80, 120, 150, 100, 130, 110, 140];
+      const opacities = [0.05, 0.08, 0.1, 0.06, 0.07, 0.09, 0.04];
+      const durations = ['20s', '25s', '22s', '28s', '24s', '26s', '21s'];
+
+      for (let i = 0; i < 7; i++) {
+        const layer = document.createElement('div');
+        layer.className = 'parallax-layer';
+        layer.style.setProperty('--opacity', opacities[i]);
+
+        const logo = document.createElement('div');
+        logo.className = 'logo-item';
+        logo.style.setProperty('--size', logoSizes[i] + 'px');
+        logo.style.setProperty('--duration', durations[i]);
+        logo.style.setProperty('--fill', '0.3');
+        logo.style.setProperty('--glow', '0.4');
+        logo.style.left = Math.random() * 100 + '%';
+        logo.style.top = Math.random() * 100 + '%';
+
+        // Create SVG text directly
+        logo.innerHTML = `<svg width="${logoSizes[i]}" height="${logoSizes[i]}" viewBox="0 0 200 200" style="filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.4))">
+          <text x="100" y="120" font-size="80" font-weight="bold" fill="rgba(37, 99, 235, 0.3)" text-anchor="middle">VC</text>
+        </svg>`;
+
+        layer.appendChild(logo);
+        parallaxBg.appendChild(layer);
+      }
+    }
+
+    createParallaxLogos();
+
+    // Parallax effect on scroll
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const parallaxLayers = document.querySelectorAll('.parallax-layer');
+
+      parallaxLayers.forEach((layer, index) => {
+        const speed = (index + 1) * 0.5;
+        layer.style.transform = `translateY(${scrollTop * speed}px)`;
+      });
+    });
+
+    // Hide/Show Navbar on scroll
+    let lastScrollTop = 0;
+    const nav = document.getElementById('navBar');
+
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.scrollY;
+
+      if (currentScroll > lastScrollTop && currentScroll > 100) {
+        nav.classList.add('hide');
+        nav.classList.remove('show');
+      } else {
+        nav.classList.remove('hide');
+        nav.classList.add('show');
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when link clicked
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+
     // FAQ Toggle
     function toggleFaq(button) {
       button.parentElement.classList.toggle('active');
@@ -1221,11 +1403,11 @@
       const email = document.getElementById('email').value;
       const phone = document.getElementById('phone').value;
       const message = document.getElementById('message').value;
-      
+
       const whatsappMessage = `Olá! Meu nome é ${name}.\n\nE-mail: ${email}\nTelefone: ${phone}\n\nDemanda: ${message}`;
       const encodedMessage = encodeURIComponent(whatsappMessage);
       window.open(`https://wa.me/554797701300?text=${encodedMessage}`, '_blank');
-      
+
       closeContactModal();
       document.querySelector('form').reset();
     }
@@ -1239,7 +1421,7 @@
         const suffix = text.replace(/\d/g, '').trim();
         let current = 0;
         const increment = Math.ceil(target / 100);
-        
+
         const timer = setInterval(() => {
           current += increment;
           if (current >= target) {
