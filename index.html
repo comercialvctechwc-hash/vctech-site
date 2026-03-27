@@ -34,114 +34,57 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0a0e27 0%, #0f0f0f 50%, #000000 100%);
+      background: #000;
       color: var(--text-primary);
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* ===== ANIMATED BACKGROUND ===== */
-    .bg-animated {
+    /* ===== LIGHT STREAK BACKGROUND ===== */
+    .bg-streaks {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: 1;
-      overflow: hidden;
       pointer-events: none;
+      background: linear-gradient(90deg, #000 0%, #0a0e27 25%, #000 50%, #0a0e27 75%, #000 100%);
+      background-size: 200% 100%;
+      animation: streamBg 20s linear infinite;
     }
 
-    .logo-bg {
+    @keyframes streamBg {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: -200% 0%;
+      }
+    }
+
+    .streak {
       position: absolute;
-      width: 400px;
-      height: 400px;
-      opacity: 0.08;
-      animation: rotate-logo 30s linear infinite;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.6), transparent);
+      animation: streak 8s linear infinite;
     }
 
-    @keyframes rotate-logo {
-      from {
-        transform: rotate(0deg);
+    @keyframes streak {
+      0% {
+        left: -100%;
+        opacity: 0;
       }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .logo-bg:nth-child(1) {
-      top: 10%;
-      left: 5%;
-      animation: rotate-logo 40s linear infinite reverse;
-      filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.4));
-    }
-
-    .logo-bg:nth-child(2) {
-      top: 60%;
-      right: 10%;
-      animation: rotate-logo 50s linear infinite;
-      filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.3));
-    }
-
-    .logo-bg:nth-child(3) {
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: rotate-logo 35s linear infinite reverse;
-      filter: drop-shadow(0 0 35px rgba(96, 165, 250, 0.35));
-    }
-
-    .wave {
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 50% 20%, rgba(96, 165, 250, 0.12) 0%, transparent 50%);
-      animation: wave 15s ease-in-out infinite;
-    }
-
-    @keyframes wave {
-      0%, 100% {
-        transform: translateX(0) translateY(0);
-      }
-      25% {
-        transform: translateX(-50px) translateY(-50px);
-      }
-      50% {
-        transform: translateX(-100px) translateY(0);
-      }
-      75% {
-        transform: translateX(-50px) translateY(50px);
-      }
-    }
-
-    .particles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .particle {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: rgba(37, 99, 235, 0.6);
-      border-radius: 50%;
-      box-shadow: 0 0 20px rgba(37, 99, 235, 0.8);
-      animation: float-particle 10s infinite ease-in-out;
-    }
-
-    @keyframes float-particle {
-      0%, 100% {
-        transform: translateY(0) translateX(0);
-        opacity: 0.3;
-      }
-      50% {
-        transform: translateY(-100px) translateX(50px);
+      10% {
         opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        left: 100%;
+        opacity: 0;
       }
     }
 
@@ -172,17 +115,11 @@
       height: 80px;
       display: flex;
       align-items: center;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      transform: translateY(0);
+      transition: transform 0.3s ease;
     }
 
     .nav.hidden {
       transform: translateY(-100%);
-      box-shadow: none;
-    }
-
-    .nav.show {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .nav-inner {
@@ -265,7 +202,6 @@
       height: 3px;
       background: var(--text-primary);
       transition: all 0.3s ease;
-      display: block;
     }
 
     .hamburger.active span:nth-child(1) {
@@ -294,7 +230,7 @@
       backdrop-filter: blur(10px);
       z-index: 99;
       transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.3s ease;
       overflow-y: auto;
     }
 
@@ -309,13 +245,11 @@
       color: var(--text-secondary);
       border-bottom: 1px solid var(--border-color);
       transition: all 0.3s ease;
-      font-weight: 500;
     }
 
     .mobile-menu a:hover {
       background: rgba(37, 99, 235, 0.1);
       color: var(--accent-primary);
-      padding-left: 32px;
     }
 
     /* ===== BODY PADDING ===== */
@@ -334,7 +268,7 @@
 
     .hero-content {
       max-width: 750px;
-      animation: fadeInUp 0.8s ease-out;
+      animation: fadeInUp 0.6s ease-out;
     }
 
     .hero-tag {
@@ -349,7 +283,6 @@
       font-weight: 600;
       color: var(--accent-primary);
       margin-bottom: 24px;
-      letter-spacing: 0.5px;
     }
 
     .hero h1 {
@@ -358,7 +291,6 @@
       font-weight: 800;
       letter-spacing: -2px;
       margin-bottom: 24px;
-      color: var(--text-primary);
     }
 
     .hero p {
@@ -366,7 +298,6 @@
       color: var(--text-secondary);
       margin-bottom: 36px;
       line-height: 1.8;
-      max-width: 650px;
     }
 
     .hero-cta {
@@ -400,7 +331,7 @@
       background: rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.6s ease, height 0.6s ease;
     }
 
     .btn:active::before {
@@ -449,15 +380,15 @@
       border: 1px solid var(--border-color);
       border-radius: 16px;
       text-align: center;
-      transition: all 0.4s ease;
-      animation: fadeInUpScroll 0.8s ease-out;
+      transition: all 0.3s ease;
       opacity: 0;
+      animation: fadeInCard 0.6s ease-out forwards;
     }
 
-    @keyframes fadeInUpScroll {
+    @keyframes fadeInCard {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -465,15 +396,10 @@
       }
     }
 
-    .stat-card.show {
-      animation: fadeInUpScroll 0.8s ease-out forwards;
-    }
-
     .stat-card:hover {
       border-color: var(--accent-primary);
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(59, 130, 246, 0.12));
       transform: translateY(-8px);
-      box-shadow: var(--shadow-hard);
     }
 
     .stat-number {
@@ -502,14 +428,12 @@
     .section-header {
       text-align: center;
       margin-bottom: 60px;
-      animation: fadeIn 0.8s ease-out;
     }
 
     .section-header h2 {
       font-size: clamp(36px, 5vw, 48px);
       font-weight: 800;
       margin-bottom: 16px;
-      letter-spacing: -1.5px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -517,26 +441,20 @@
     }
 
     .section-icon {
-      display: inline-flex;
+      width: 50px;
+      height: 50px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 60px;
-      height: 60px;
+      flex-shrink: 0;
     }
 
     .section-icon svg {
       width: 100%;
       height: 100%;
-      animation: iconFloat 3s ease-in-out infinite;
-    }
-
-    @keyframes iconFloat {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+      stroke: var(--accent-primary);
+      fill: none;
+      stroke-width: 1.5;
     }
 
     .section-header p {
@@ -558,31 +476,15 @@
       border: 1px solid var(--border-color);
       border-radius: 16px;
       overflow: hidden;
-      transition: all 0.4s ease;
-      animation: cardHidden 0.6s ease-out;
+      transition: all 0.3s ease;
       opacity: 0;
-    }
-
-    @keyframes cardHidden {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .portfolio-card.show {
-      animation: cardHidden 0.6s ease-out forwards;
+      animation: fadeInCard 0.6s ease-out forwards;
     }
 
     .portfolio-card:hover {
       border-color: var(--accent-primary);
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(59, 130, 246, 0.12));
-      transform: translateY(-12px);
-      box-shadow: var(--shadow-hard);
+      transform: translateY(-8px);
     }
 
     .portfolio-image {
@@ -601,22 +503,6 @@
 
     .portfolio-card:hover .portfolio-image {
       background: linear-gradient(135deg, var(--accent-secondary), var(--accent-light));
-    }
-
-    .portfolio-image::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
-      animation: shine 3s infinite;
-    }
-
-    @keyframes shine {
-      0% { transform: translate(-50%, -50%); }
-      100% { transform: translate(50%, 50%); }
     }
 
     .portfolio-content {
@@ -646,20 +532,15 @@
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.08));
       border: 1px solid var(--border-color);
       border-radius: 16px;
-      transition: all 0.4s ease;
-      animation: cardHidden 0.6s ease-out;
+      transition: all 0.3s ease;
       opacity: 0;
-    }
-
-    .testimonial-card.show {
-      animation: cardHidden 0.6s ease-out forwards;
+      animation: fadeInCard 0.6s ease-out forwards;
     }
 
     .testimonial-card:hover {
       border-color: var(--accent-primary);
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(59, 130, 246, 0.12));
       transform: translateY(-8px);
-      box-shadow: var(--shadow-hard);
     }
 
     .testimonial-header {
@@ -721,20 +602,15 @@
       border: 1px solid var(--border-color);
       border-radius: 16px;
       text-align: center;
-      transition: all 0.4s ease;
-      animation: cardHidden 0.6s ease-out;
+      transition: all 0.3s ease;
       opacity: 0;
-    }
-
-    .diff-card.show {
-      animation: cardHidden 0.6s ease-out forwards;
+      animation: fadeInCard 0.6s ease-out forwards;
     }
 
     .diff-card:hover {
       border-color: var(--accent-primary);
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(59, 130, 246, 0.12));
       transform: translateY(-8px);
-      box-shadow: var(--shadow-hard);
     }
 
     .diff-icon {
@@ -772,12 +648,8 @@
       border: 1px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
-      animation: cardHidden 0.6s ease-out;
       opacity: 0;
-    }
-
-    .faq-item.show {
-      animation: cardHidden 0.6s ease-out forwards;
+      animation: fadeInCard 0.6s ease-out forwards;
     }
 
     .faq-question {
@@ -800,14 +672,7 @@
     }
 
     .faq-icon {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-primary);
       transition: transform 0.3s ease;
-      font-size: 14px;
     }
 
     .faq-item.active .faq-icon {
@@ -817,7 +682,7 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: max-height 0.3s ease;
       color: var(--text-secondary);
     }
 
@@ -844,20 +709,15 @@
       border: 1px solid var(--border-color);
       border-radius: 16px;
       text-align: center;
-      transition: all 0.4s ease;
-      animation: cardHidden 0.6s ease-out;
+      transition: all 0.3s ease;
       opacity: 0;
-    }
-
-    .contact-item.show {
-      animation: cardHidden 0.6s ease-out forwards;
+      animation: fadeInCard 0.6s ease-out forwards;
     }
 
     .contact-item:hover {
       border-color: var(--accent-primary);
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(59, 130, 246, 0.12));
       transform: translateY(-8px);
-      box-shadow: var(--shadow-hard);
     }
 
     .contact-icon {
@@ -885,7 +745,6 @@
     .contact-value {
       font-size: 17px;
       font-weight: 600;
-      color: var(--text-primary);
     }
 
     .contact-value a {
@@ -923,8 +782,7 @@
       padding: 50px;
       max-width: 500px;
       width: 90%;
-      box-shadow: var(--shadow-hard);
-      animation: slideUp 0.4s ease;
+      animation: slideUp 0.3s ease;
     }
 
     .modal-content h2 {
@@ -942,7 +800,6 @@
       font-size: 14px;
       font-weight: 600;
       margin-bottom: 8px;
-      color: var(--text-primary);
     }
 
     .form-group input,
@@ -997,11 +854,6 @@
       border: 1px solid var(--border-color);
     }
 
-    .btn-form-cancel:hover {
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--text-primary);
-    }
-
     /* ===== FOOTER ===== */
     footer {
       border-top: 1px solid var(--border-color);
@@ -1035,7 +887,6 @@
       padding-top: 30px;
       text-align: center;
       font-size: 14px;
-      color: var(--text-muted);
     }
 
     /* ===== ANIMATIONS ===== */
@@ -1058,7 +909,7 @@
     @keyframes slideUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -1096,22 +947,23 @@
         height: 40px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- ANIMATED BACKGROUND -->
-  <div class="bg-animated">
-    <svg class="logo-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <text x="100" y="120" font-size="80" font-weight="bold" fill="rgba(37,99,235,0.5)" text-anchor="middle">VC</text>
-    </svg>
-    <svg class="logo-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <text x="100" y="120" font-size="80" font-weight="bold" fill="rgba(59,130,246,0.4)" text-anchor="middle">VC</text>
-    </svg>
-    <svg class="logo-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <text x="100" y="120" font-size="80" font-weight="bold" fill="rgba(96,165,250,0.35)" text-anchor="middle">VC</text>
-    </svg>
-    <div class="wave"></div>
-    <div class="particles" id="particles"></div>
+  <!-- LIGHT STREAKS BACKGROUND -->
+  <div class="bg-streaks">
+    <div class="streak" style="top: 20%; animation-delay: 0s;"></div>
+    <div class="streak" style="top: 40%; animation-delay: 2s;"></div>
+    <div class="streak" style="top: 60%; animation-delay: 4s;"></div>
+    <div class="streak" style="top: 80%; animation-delay: 6s;"></div>
   </div>
 
   <!-- NAVIGATION -->
@@ -1151,7 +1003,7 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-tag">
-            <span>🚀</span>
+            <span style="font-size: 16px;">🚀</span>
             Vendas • Consultoria • Tecnologia
           </div>
           <h1>Estrutura comercial com presença profissional e foco em resultado</h1>
@@ -1174,15 +1026,15 @@
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-number counter">500+</div>
-            <div class="stat-label">💼 Empresas Parceiras</div>
+            <div class="stat-label">Empresas Parceiras</div>
           </div>
           <div class="stat-card">
             <div class="stat-number counter">350%</div>
-            <div class="stat-label">📈 Aumento em Vendas</div>
+            <div class="stat-label">Aumento em Vendas</div>
           </div>
           <div class="stat-card">
             <div class="stat-number counter">2h</div>
-            <div class="stat-label">⚡ Tempo de Resposta</div>
+            <div class="stat-label">Tempo de Resposta</div>
           </div>
         </div>
       </div>
@@ -1192,15 +1044,17 @@
     <section class="section" id="portfolio">
       <div class="container">
         <div class="section-header">
-          <div class="section-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline>
-              <polyline points="12 12 20 7.5"></polyline>
-              <polyline points="12 12 12 21"></polyline>
-              <polyline points="12 12 4 7.5"></polyline>
-            </svg>
-          </div>
-          <h2>Nossos Casos de Sucesso</h2>
+          <h2>
+            <div class="section-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </div>
+            Nossos Casos de Sucesso
+          </h2>
         </div>
         <div class="portfolio-grid">
           <div class="portfolio-card">
@@ -1232,12 +1086,14 @@
     <section class="section">
       <div class="container">
         <div class="section-header">
-          <div class="section-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-            </svg>
-          </div>
-          <h2>Por que escolher V C TECH</h2>
+          <h2>
+            <div class="section-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+            </div>
+            Por que escolher V C TECH
+          </h2>
         </div>
         <div class="diff-grid">
           <div class="diff-card">
@@ -1263,12 +1119,14 @@
     <section class="section" id="testimonials">
       <div class="container">
         <div class="section-header">
-          <div class="section-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-            </svg>
-          </div>
-          <h2>O que nossos clientes dizem</h2>
+          <h2>
+            <div class="section-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+            </div>
+            O que nossos clientes dizem
+          </h2>
         </div>
         <div class="testimonials-grid">
           <div class="testimonial-card">
@@ -1291,7 +1149,7 @@
               </div>
             </div>
             <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"Profissionalismo puro. A consultoria fornecida foi exatamente o que precisávamos. Equipe comprometida."</p>
+            <p class="testimonial-text">"Profissionalismo puro. A consultoria foi exatamente o que precisávamos. Equipe muito comprometida."</p>
           </div>
           <div class="testimonial-card">
             <div class="testimonial-header">
@@ -1302,7 +1160,7 @@
               </div>
             </div>
             <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"Implementação ágil, suporte contínuo e resultados tangibilizados. Superaram nossas expectativas!"</p>
+            <p class="testimonial-text">"Implementação ágil, suporte contínuo e resultados reais. Superaram totalmente nossas expectativas!"</p>
           </div>
         </div>
       </div>
@@ -1312,14 +1170,15 @@
     <section class="section" id="faq">
       <div class="container">
         <div class="section-header">
-          <div class="section-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 16v-4"></path>
-              <path d="M12 8h.01"></path>
-            </svg>
-          </div>
-          <h2>Perguntas Frequentes</h2>
+          <h2>
+            <div class="section-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4M12 8h.01"></path>
+              </svg>
+            </div>
+            Perguntas Frequentes
+          </h2>
         </div>
         <div class="faq-container">
           <div class="faq-item">
@@ -1328,7 +1187,7 @@
               <span class="faq-icon">▼</span>
             </button>
             <div class="faq-answer">
-              Realizamos um diagnóstico completo da sua operação comercial, identificamos gargalos, estruturamos processos e implementamos soluções comprovadas. Acompanhamos mensalmente os resultados.
+              Realizamos um diagnóstico completo, identificamos gargalos, estruturamos processos e implementamos soluções. Acompanhamos mensalmente os resultados.
             </div>
           </div>
           <div class="faq-item">
@@ -1337,16 +1196,16 @@
               <span class="faq-icon">▼</span>
             </button>
             <div class="faq-answer">
-              Oferecemos flexibilidade total. Começamos com um diagnóstico inicial sem compromisso, depois sugerimos pacotes de 3, 6 ou 12 meses.
+              Oferecemos flexibilidade total. Começamos com diagnóstico inicial sem compromisso, depois sugerimos pacotes de 3, 6 ou 12 meses.
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-              <span>Como é feita a cobrança dos serviços?</span>
+              <span>Como é feita a cobrança?</span>
               <span class="faq-icon">▼</span>
             </button>
             <div class="faq-answer">
-              Apresentamos propostas personalizadas com valores fixos mensais ou por projeto. Adaptamos conforme seu orçamento e necessidades.
+              Apresentamos propostas personalizadas com valores fixos mensais ou por projeto. Adaptamos conforme seu orçamento.
             </div>
           </div>
           <div class="faq-item">
@@ -1355,7 +1214,7 @@
               <span class="faq-icon">▼</span>
             </button>
             <div class="faq-answer">
-              Sim! Atuamos em todo o Brasil via videoconferência e presencialmente em Balneário Camboriú. Adaptamos o modelo ao que funcionar melhor.
+              Sim! Atuamos em todo o Brasil via videoconferência e presencialmente em Balneário Camboriú.
             </div>
           </div>
         </div>
@@ -1366,12 +1225,14 @@
     <section class="section contact-section" id="contact">
       <div class="container">
         <div class="section-header">
-          <div class="section-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-          </div>
-          <h2>Vamos conversar?</h2>
+          <h2>
+            <div class="section-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            Vamos conversar?
+          </h2>
         </div>
         <div class="contact-info">
           <div class="contact-item">
@@ -1391,9 +1252,7 @@
           <div class="contact-item">
             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div class="contact-label">Endereço</div>
-            <div class="contact-value">
-              Balneário Camboriú - SC
-            </div>
+            <div class="contact-value">Balneário Camboriú - SC</div>
           </div>
         </div>
         <div style="text-align: center; margin-top: 50px; position: relative; z-index: 10;">
@@ -1408,7 +1267,7 @@
   <!-- CONTACT MODAL -->
   <div id="contactModal" class="modal">
     <div class="modal-content">
-      <h2>Vamos começar a conversa 💬</h2>
+      <h2>Vamos começar a conversa</h2>
       <form onsubmit="handleSubmit(event)">
         <div class="form-group">
           <label for="name">Seu Nome *</label>
@@ -1427,7 +1286,7 @@
           <textarea id="message" name="message" rows="5" required></textarea>
         </div>
         <div class="form-actions">
-          <button type="submit" class="btn-form-submit">Enviar para WhatsApp ✈️</button>
+          <button type="submit" class="btn-form-submit">Enviar para WhatsApp</button>
           <button type="button" class="btn-form-cancel" onclick="closeContactModal()">Cancelar</button>
         </div>
       </form>
@@ -1439,12 +1298,12 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>📍 V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</h4>
+          <h4>V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</h4>
           <p>CNPJ: 58.313.203/0001-18</p>
           <p>Empresa com situação cadastral ativa</p>
         </div>
         <div>
-          <h4>📋 Localização</h4>
+          <h4>Localização</h4>
           <p>Av Osmar de Souza Nunes, 365</p>
           <p>Sala 01, Pioneiros</p>
           <p>Balneário Camboriú - SC, 88.331-070</p>
@@ -1457,22 +1316,6 @@
   </footer>
 
   <script>
-    // Create Particles
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 5 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        particlesContainer.appendChild(particle);
-      }
-    }
-
-    createParticles();
-
     // Hamburger Menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -1493,41 +1336,20 @@
 
     window.addEventListener('scroll', () => {
       let currentScroll = window.scrollY;
-
       if (currentScroll > lastScrollTop && currentScroll > 100) {
         nav.classList.add('hidden');
-        nav.classList.remove('show');
       } else {
         nav.classList.remove('hidden');
-        nav.classList.add('show');
       }
-
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-
-      // Scroll animations for cards
-      triggerCardAnimations();
-    });
-
-    // Scroll animations for cards
-    function triggerCardAnimations() {
-      const cards = document.querySelectorAll('.stat-card, .portfolio-card, .testimonial-card, .diff-card, .faq-item, .contact-item');
-      
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          setTimeout(() => {
-            card.classList.add('show');
-          }, index * 100);
-        }
-      });
-    }
+    }, { passive: true });
 
     // FAQ Toggle
     function toggleFaq(button) {
       button.parentElement.classList.toggle('active');
     }
 
-    // Modal Functions
+    // Modal
     function openContactModal() {
       document.getElementById('contactModal').classList.add('active');
       closeMobileMenu();
@@ -1537,39 +1359,31 @@
       document.getElementById('contactModal').classList.remove('active');
     }
 
-    window.onclick = function(event) {
+    window.onclick = (e) => {
       const modal = document.getElementById('contactModal');
-      if (event.target === modal) {
-        closeContactModal();
-      }
-    }
+      if (e.target === modal) closeContactModal();
+    };
 
-    // Form Submission
-    function handleSubmit(event) {
-      event.preventDefault();
+    function handleSubmit(e) {
+      e.preventDefault();
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const phone = document.getElementById('phone').value;
       const message = document.getElementById('message').value;
-
-      const whatsappMessage = `Olá! Meu nome é ${name}.\n\nE-mail: ${email}\nTelefone: ${phone}\n\nDemanda: ${message}`;
-      const encodedMessage = encodeURIComponent(whatsappMessage);
-      window.open(`https://wa.me/554797701300?text=${encodedMessage}`, '_blank');
-
+      const msg = `Olá! Meu nome é ${name}.\n\nE-mail: ${email}\nTelefone: ${phone}\n\nDemanda: ${message}`;
+      window.open(`https://wa.me/554797701300?text=${encodeURIComponent(msg)}`, '_blank');
       closeContactModal();
       document.querySelector('form').reset();
     }
 
     // Counter Animation
     function animateCounter() {
-      const counters = document.querySelectorAll('.counter');
-      counters.forEach(counter => {
+      document.querySelectorAll('.counter').forEach(counter => {
         const text = counter.textContent;
         const target = parseInt(text.replace(/[^\d]/g, ''));
         const suffix = text.replace(/\d/g, '').trim();
         let current = 0;
-        const increment = Math.ceil(target / 100);
-
+        const increment = Math.ceil(target / 50);
         const timer = setInterval(() => {
           current += increment;
           if (current >= target) {
@@ -1578,11 +1392,10 @@
           } else {
             counter.textContent = current + (suffix ? (suffix === '%' ? '%' : '+') : '');
           }
-        }, 20);
+        }, 15);
       });
     }
 
-    // Trigger counter animation on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1592,21 +1405,12 @@
       });
     }, { threshold: 0.5 });
 
-    const statsSection = document.querySelector('.stats');
-    if (statsSection) {
-      observer.observe(statsSection);
+    if (document.querySelector('.stats')) {
+      observer.observe(document.querySelector('.stats'));
     }
 
-    // Close modal on Escape
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeContactModal();
-      }
-    });
-
-    // Initial card animations
-    window.addEventListener('load', () => {
-      triggerCardAnimations();
+      if (e.key === 'Escape') closeContactModal();
     });
   </script>
 </body>
