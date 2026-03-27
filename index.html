@@ -53,6 +53,45 @@
       pointer-events: none;
     }
 
+    .logo-bg {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      opacity: 0.08;
+      animation: rotate-logo 30s linear infinite;
+    }
+
+    @keyframes rotate-logo {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .logo-bg:nth-child(1) {
+      top: 10%;
+      left: 5%;
+      animation: rotate-logo 40s linear infinite reverse;
+      filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.4));
+    }
+
+    .logo-bg:nth-child(2) {
+      top: 60%;
+      right: 10%;
+      animation: rotate-logo 50s linear infinite;
+      filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.3));
+    }
+
+    .logo-bg:nth-child(3) {
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: rotate-logo 35s linear infinite reverse;
+      filter: drop-shadow(0 0 35px rgba(96, 165, 250, 0.35));
+    }
+
     .wave {
       position: absolute;
       width: 200%;
@@ -139,6 +178,11 @@
 
     .nav.hidden {
       transform: translateY(-100%);
+      box-shadow: none;
+    }
+
+    .nav.show {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .nav-inner {
@@ -252,16 +296,6 @@
       transform: translateX(100%);
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
-      animation: slideIn 0.4s ease;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateX(100%);
-      }
-      to {
-        transform: translateX(0);
-      }
     }
 
     .mobile-menu.active {
@@ -363,10 +397,10 @@
       left: 50%;
       width: 0;
       height: 0;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .btn:active::before {
@@ -416,7 +450,23 @@
       border-radius: 16px;
       text-align: center;
       transition: all 0.4s ease;
-      animation: fadeInUp 0.8s ease-out;
+      animation: fadeInUpScroll 0.8s ease-out;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUpScroll {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stat-card.show {
+      animation: fadeInUpScroll 0.8s ease-out forwards;
     }
 
     .stat-card:hover {
@@ -460,6 +510,33 @@
       font-weight: 800;
       margin-bottom: 16px;
       letter-spacing: -1.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .section-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+    }
+
+    .section-icon svg {
+      width: 100%;
+      height: 100%;
+      animation: iconFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes iconFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     .section-header p {
@@ -482,7 +559,23 @@
       border-radius: 16px;
       overflow: hidden;
       transition: all 0.4s ease;
-      animation: fadeInUp 0.8s ease-out;
+      animation: cardHidden 0.6s ease-out;
+      opacity: 0;
+    }
+
+    @keyframes cardHidden {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .portfolio-card.show {
+      animation: cardHidden 0.6s ease-out forwards;
     }
 
     .portfolio-card:hover {
@@ -554,7 +647,12 @@
       border: 1px solid var(--border-color);
       border-radius: 16px;
       transition: all 0.4s ease;
-      animation: fadeInUp 0.8s ease-out;
+      animation: cardHidden 0.6s ease-out;
+      opacity: 0;
+    }
+
+    .testimonial-card.show {
+      animation: cardHidden 0.6s ease-out forwards;
     }
 
     .testimonial-card:hover {
@@ -624,7 +722,12 @@
       border-radius: 16px;
       text-align: center;
       transition: all 0.4s ease;
-      animation: fadeInUp 0.8s ease-out;
+      animation: cardHidden 0.6s ease-out;
+      opacity: 0;
+    }
+
+    .diff-card.show {
+      animation: cardHidden 0.6s ease-out forwards;
     }
 
     .diff-card:hover {
@@ -669,7 +772,12 @@
       border: 1px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
-      animation: fadeInUp 0.8s ease-out;
+      animation: cardHidden 0.6s ease-out;
+      opacity: 0;
+    }
+
+    .faq-item.show {
+      animation: cardHidden 0.6s ease-out forwards;
     }
 
     .faq-question {
@@ -737,6 +845,12 @@
       border-radius: 16px;
       text-align: center;
       transition: all 0.4s ease;
+      animation: cardHidden 0.6s ease-out;
+      opacity: 0;
+    }
+
+    .contact-item.show {
+      animation: cardHidden 0.6s ease-out forwards;
     }
 
     .contact-item:hover {
@@ -970,6 +1084,10 @@
         font-size: 36px;
       }
 
+      .section-header h2 {
+        flex-direction: column;
+      }
+
       .modal-content {
         padding: 30px;
       }
@@ -983,6 +1101,15 @@
 <body>
   <!-- ANIMATED BACKGROUND -->
   <div class="bg-animated">
+    <svg class="logo-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="100" y="120" font-size="80" font-weight="bold" fill="rgba(37,99,235,0.5)" text-anchor="middle">VC</text>
+    </svg>
+    <svg class="logo-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="100" y="120" font-size="80" font-weight="bold" fill="rgba(59,130,246,0.4)" text-anchor="middle">VC</text>
+    </svg>
+    <svg class="logo-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="100" y="120" font-size="80" font-weight="bold" fill="rgba(96,165,250,0.35)" text-anchor="middle">VC</text>
+    </svg>
     <div class="wave"></div>
     <div class="particles" id="particles"></div>
   </div>
@@ -1065,8 +1192,15 @@
     <section class="section" id="portfolio">
       <div class="container">
         <div class="section-header">
-          <h2>🎯 Nossos Casos de Sucesso</h2>
-          <p>Projetos que transformaram resultados comerciais e estratégias empresariais</p>
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline>
+              <polyline points="12 12 20 7.5"></polyline>
+              <polyline points="12 12 12 21"></polyline>
+              <polyline points="12 12 4 7.5"></polyline>
+            </svg>
+          </div>
+          <h2>Nossos Casos de Sucesso</h2>
         </div>
         <div class="portfolio-grid">
           <div class="portfolio-card">
@@ -1098,8 +1232,12 @@
     <section class="section">
       <div class="container">
         <div class="section-header">
-          <h2>💎 Por que escolher V C TECH</h2>
-          <p>Nossa proposta de valor diferenciada para seu negócio</p>
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <h2>Por que escolher V C TECH</h2>
         </div>
         <div class="diff-grid">
           <div class="diff-card">
@@ -1125,8 +1263,12 @@
     <section class="section" id="testimonials">
       <div class="container">
         <div class="section-header">
-          <h2>⭐ O que nossos clientes dizem</h2>
-          <p>Histórias reais de sucesso e transformação empresarial</p>
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <h2>O que nossos clientes dizem</h2>
         </div>
         <div class="testimonials-grid">
           <div class="testimonial-card">
@@ -1170,8 +1312,14 @@
     <section class="section" id="faq">
       <div class="container">
         <div class="section-header">
-          <h2>❓ Perguntas Frequentes</h2>
-          <p>Respostas às dúvidas mais comuns sobre nossos serviços</p>
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+          </div>
+          <h2>Perguntas Frequentes</h2>
         </div>
         <div class="faq-container">
           <div class="faq-item">
@@ -1218,8 +1366,12 @@
     <section class="section contact-section" id="contact">
       <div class="container">
         <div class="section-header">
-          <h2>📞 Vamos conversar?</h2>
-          <p>Escolha o melhor canal para entrar em contato com nosso time</p>
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <h2>Vamos conversar?</h2>
         </div>
         <div class="contact-info">
           <div class="contact-item">
@@ -1292,7 +1444,7 @@
           <p>Empresa com situação cadastral ativa</p>
         </div>
         <div>
-          <h4>📋 Localiza��ão</h4>
+          <h4>📋 Localização</h4>
           <p>Av Osmar de Souza Nunes, 365</p>
           <p>Sala 01, Pioneiros</p>
           <p>Balneário Camboriú - SC, 88.331-070</p>
@@ -1344,12 +1496,31 @@
 
       if (currentScroll > lastScrollTop && currentScroll > 100) {
         nav.classList.add('hidden');
+        nav.classList.remove('show');
       } else {
         nav.classList.remove('hidden');
+        nav.classList.add('show');
       }
 
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+
+      // Scroll animations for cards
+      triggerCardAnimations();
     });
+
+    // Scroll animations for cards
+    function triggerCardAnimations() {
+      const cards = document.querySelectorAll('.stat-card, .portfolio-card, .testimonial-card, .diff-card, .faq-item, .contact-item');
+      
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          setTimeout(() => {
+            card.classList.add('show');
+          }, index * 100);
+        }
+      });
+    }
 
     // FAQ Toggle
     function toggleFaq(button) {
@@ -1431,6 +1602,11 @@
       if (e.key === 'Escape') {
         closeContactModal();
       }
+    });
+
+    // Initial card animations
+    window.addEventListener('load', () => {
+      triggerCardAnimations();
     });
   </script>
 </body>
