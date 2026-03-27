@@ -1,48 +1,621 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termos de Serviço - V C TECH</title>
-    <link rel="stylesheet" href="style.css"> <!-- Assuming you have a CSS file to match the site's style -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termos de Serviço | V C TECH</title>
+  <meta name="description" content="Termos de Serviço da V C TECH - Leia os termos e condições de uso de nossos serviços." />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0f0f0f;
+      --bg-secondary: #1a1a1a;
+      --bg-tertiary: #242424;
+      --accent-primary: #2563eb;
+      --accent-secondary: #3b82f6;
+      --accent-light: #60a5fa;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: rgba(148, 163, 184, 0.1);
+      --shadow-hard: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #000;
+      color: var(--text-primary);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ===== LIGHT STREAK BACKGROUND ===== */
+    .bg-streaks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(90deg, #000 0%, #0a0e27 25%, #000 50%, #0a0e27 75%, #000 100%);
+      background-size: 200% 100%;
+      animation: streamBg 20s linear infinite;
+    }
+
+    @keyframes streamBg {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: -200% 0%;
+      }
+    }
+
+    .streak {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.6), transparent);
+      animation: streak 8s linear infinite;
+    }
+
+    @keyframes streak {
+      0% {
+        left: -100%;
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        left: 100%;
+        opacity: 0;
+      }
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 15, 15, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .nav.hidden {
+      transform: translateY(-100%);
+    }
+
+    .nav-inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .brand img {
+      height: 50px;
+      width: auto;
+      transition: filter 0.3s ease;
+    }
+
+    .brand:hover img {
+      filter: brightness(1.2) drop-shadow(0 0 10px rgba(37, 99, 235, 0.5));
+    }
+
+    .brand-text {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 10px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(12px, 12px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 0;
+      width: 100%;
+      max-width: 300px;
+      height: calc(100vh - 80px);
+      background: rgba(15, 15, 15, 0.98);
+      border-left: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+      z-index: 99;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .mobile-menu.active {
+      display: block;
+      transform: translateX(0);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 16px 24px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent-primary);
+    }
+
+    /* ===== BODY PADDING ===== */
+    body {
+      padding-top: 80px;
+    }
+
+    /* ===== CONTENT SECTION ===== */
+    .content-section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 10;
+      min-height: calc(100vh - 80px);
+    }
+
+    .content-header {
+      margin-bottom: 60px;
+    }
+
+    .content-header h1 {
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .content-header p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 800px;
+    }
+
+    .content-main {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.08));
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 50px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .content-main h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: var(--accent-primary);
+    }
+
+    .content-main h2:first-child {
+      margin-top: 0;
+    }
+
+    .content-main p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .content-main ul,
+    .content-main ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: var(--text-secondary);
+    }
+
+    .content-main li {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 50px 0;
+      color: var(--text-secondary);
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--accent-primary);
+      transition: all 0.3s ease;
+      padding: 5px 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-light);
+      border-bottom-color: var(--accent-light);
+    }
+
+    footer h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .footer-divider {
+      border-top: 1px solid var(--border-color);
+      padding-top: 30px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-main {
+        padding: 30px;
+      }
+
+      .brand img {
+        height: 40px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Início</a>
-        </nav>
-    </header>
-    
-    <main>
-        <h1>Termos de Serviço</h1>
-        
-        <h2>Descrição do Serviço</h2>
-        <p>O V C TECH oferece serviços de tecnologia e consultoria para auxiliar empresas no crescimento e na digitalização.</p>
+  <!-- LIGHT STREAKS BACKGROUND -->
+  <div class="bg-streaks">
+    <div class="streak" style="top: 20%; animation-delay: 0s;"></div>
+    <div class="streak" style="top: 40%; animation-delay: 2s;"></div>
+    <div class="streak" style="top: 60%; animation-delay: 4s;"></div>
+    <div class="streak" style="top: 80%; animation-delay: 6s;"></div>
+  </div>
 
-        <h2>Responsabilidades do Usuário</h2>
-        <p>Os usuários concordam em utilizar os serviços de forma legal e de acordo com as diretrizes estabelecidas pela V C TECH.</p>
+  <!-- NAVIGATION -->
+  <nav class="nav" id="navBar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="brand">
+          <img src="logo.png" alt="V C TECH Logo">
+          <span class="brand-text">V C TECH</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html#portfolio">Portfolio</a>
+          <a href="index.html#testimonials">Clientes</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="index.html#contact">Contato</a>
+        </div>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-        <h2>Limitação de Responsabilidade</h2>
-        <p>A V C TECH não é responsável por qualquer dano indireto, incidental ou consequente que possa resultar do uso de nossos serviços.</p>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#portfolio" onclick="closeMobileMenu()">Portfolio</a>
+    <a href="index.html#testimonials" onclick="closeMobileMenu()">Clientes</a>
+    <a href="index.html#faq" onclick="closeMobileMenu()">FAQ</a>
+    <a href="index.html#contact" onclick="closeMobileMenu()">Contato</a>
+  </div>
 
-        <h2>Direitos de Propriedade Intelectual</h2>
-        <p>Todo o conteúdo disponibilizado é de propriedade da V C TECH e não deve ser reproduzido sem a devida autorização.</p>
+  <!-- CONTENT -->
+  <main>
+    <section class="content-section">
+      <div class="container">
+        <div class="content-header">
+          <h1>Termos de Serviço</h1>
+          <p>Leia com atenção os termos e condições para uso dos nossos serviços</p>
+        </div>
 
-        <h2>Modificações no Serviço</h2>
-        <p>A V C TECH reserva-se o direito de modificar os serviços a qualquer momento, incluindo mudanças de preços e condições.</p>
-        
-        <h2>Legislação Aplicável</h2>
-        <p>Este contrato será regido pela legislação brasileira.</p>
-        
-        <h2>CNPJ</h2>
-        <p>58.313.203/0001-18</p>
+        <div class="content-main">
+          <h2>1. Aceite dos Termos</h2>
+          <p>Ao acessar e utilizar o site e serviços da V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA, você concorda em estar vinculado por estes Termos de Serviço. Se não concordar com alguma parte destes termos, não use nossos serviços.</p>
 
-        <h2>Informações de Contato</h2>
-        <p>Para esclarecimentos, entre em contato: <a href="mailto:adm@vctechsc.com">adm@vctechsc.com</a></p>
-    </main>
+          <h2>2. Descrição dos Serviços</h2>
+          <p>A V C TECH oferece serviços de:</p>
+          <ul>
+            <li>Consultoria comercial e estratégica</li>
+            <li>Suporte em vendas e gestão comercial</li>
+            <li>Soluções tecnológicas e digitais</li>
+            <li>Treinamento e desenvolvimento empresarial</li>
+          </ul>
+          <p>Nos reservamos o direito de modificar ou descontinuar serviços a qualquer momento, com ou sem aviso prévio.</p>
 
-    <footer>
+          <h2>3. Direitos e Responsabilidades do Usuário</h2>
+          <p>Você concorda em:</p>
+          <ul>
+            <li>Fornecer informações precisas, atualizadas e completas</li>
+            <li>Manter a confidencialidade de sua conta e senha</li>
+            <li>Ser responsável por todas as atividades que ocorrem em sua conta</li>
+            <li>Notificar-nos imediatamente sobre qualquer uso não autorizado</li>
+            <li>Usar nossos serviços apenas para fins legítimos e legais</li>
+          </ul>
+
+          <h2>4. Política de Uso Aceitável</h2>
+          <p>Você não pode utilizar nossos serviços para:</p>
+          <ul>
+            <li>Atividades ilegais ou que violem leis aplicáveis</li>
+            <li>Assédio, difamação ou discriminação</li>
+            <li>Transmitir vírus, malware ou código malicioso</li>
+            <li>Acesso não autorizado ou violação de segurança</li>
+            <li>Interferir com serviços ou infraestrutura</li>
+            <li>Spam ou comunicações indesejadas</li>
+            <li>Reprodução não autorizada de conteúdo protegido</li>
+          </ul>
+
+          <h2>5. Propriedade Intelectual</h2>
+          <p>Todo o conteúdo, designs, textos, gráficos, logos e outros materiais no site são propriedade intelectual da V C TECH ou de seus fornecedores. Você não pode reproduzir, distribuir ou transmitir esse conteúdo sem permissão expressa por escrito.</p>
+
+          <h2>6. Limitações de Responsabilidade</h2>
+          <p>A V C TECH não será responsável por:</p>
+          <ul>
+            <li>Danos indiretos, incidentais, especiais ou consequenciais</li>
+            <li>Perda de receita, lucro ou dados</li>
+            <li>Interrupção de negócios</li>
+            <li>Danos causados por terceiros ou fatores externos</li>
+          </ul>
+          <p>Nossa responsabilidade máxima será limitada ao valor pago pelos serviços.</p>
+
+          <h2>7. Isenção de Garantias</h2>
+          <p>Os serviços são fornecidos "CONFORME ESTÃO" sem garantias de qualquer tipo. Isentamos qualquer garantia expressa ou implícita, incluindo garantias de comercialização, adequação para um propósito específico ou não-violação.</p>
+
+          <h2>8. Indenização</h2>
+          <p>Você concorda em indenizar e isentar a V C TECH de qualquer reivindicação, dano, perda ou despesa (incluindo honorários advocatícios) resultantes de seu uso dos serviços ou violação destes Termos.</p>
+
+          <h2>9. Links de Terceiros</h2>
+          <p>Nosso site pode conter links para sites de terceiros. Não somos responsáveis pelo conteúdo, precisão ou práticas de privacidade de sites externos. Acesse sites de terceiros por sua conta e risco.</p>
+
+          <h2>10. Modificações dos Termos</h2>
+          <p>Reservamos o direito de modificar estes Termos a qualquer momento. Alterações importantes serão comunicadas com antecedência quando possível. Seu uso contínuo dos serviços após modificações constitui aceitação dos novos termos.</p>
+
+          <h2>11. Rescisão</h2>
+          <p>Podemos rescindir ou suspender sua conta e acesso aos serviços a qualquer momento, com ou sem causa, com ou sem aviso prévio.</p>
+
+          <h2>12. Lei Aplicável e Jurisdição</h2>
+          <p>Estes Termos de Serviço são regidos pelas leis da República Federativa do Brasil. Qualquer disputa será resolvida nos tribunais competentes de Santa Catarina.</p>
+
+          <h2>13. Contato</h2>
+          <p>Se você tiver dúvidas ou preocupações sobre estes Termos de Serviço, entre em contato conosco:</p>
+          <ul>
+            <li><strong>Email:</strong> adm@vctechsc.com</li>
+            <li><strong>WhatsApp:</strong> +55 47 9770-1300</li>
+            <li><strong>Endereço:</strong> Av Osmar de Souza Nunes, 365 - Sala 01, Pioneiros, Balneário Camboriú - SC, 88.331-070</li>
+            <li><strong>CNPJ:</strong> 58.313.203/0001-18</li>
+          </ul>
+
+          <h2>14. Disposições Finais</h2>
+          <p>Se alguma disposição destes Termos for considerada inválida ou inexequível, as disposições restantes permanecerão em vigor. O não exercício de qualquer direito não constitui renúncia desse direito.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</h4>
+          <p>CNPJ: 58.313.203/0001-18</p>
+          <p>Empresa com situação cadastral ativa</p>
+          <div class="footer-links">
+            <a href="politica-privacidade.html">Política de Privacidade</a>
+            <a href="termos-servico.html">Termos de Serviço</a>
+          </div>
+        </div>
+        <div>
+          <h4>Localização</h4>
+          <p>Av Osmar de Souza Nunes, 365</p>
+          <p>Sala 01, Pioneiros</p>
+          <p>Balneário Camboriú - SC, 88.331-070</p>
+        </div>
+      </div>
+      <div class="footer-divider">
         <p>&copy; 2026 V C TECH. Todos os direitos reservados.</p>
-    </footer>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+
+    // Hide/Show Navbar on scroll
+    let lastScrollTop = 0;
+    const nav = document.getElementById('navBar');
+
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.scrollY;
+      if (currentScroll > lastScrollTop && currentScroll > 100) {
+        nav.classList.add('hidden');
+      } else {
+        nav.classList.remove('hidden');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, { passive: true });
+  </script>
 </body>
 </html>
