@@ -3,14 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>V C TECH | Vendas, Consultoria & Tecnologia</title>
-  <meta name="description" content="A V C TECH presta serviços de vendas, consultoria comercial e tecnologia para empresas que desejam crescer com estrutura, estratégia e presença profissional." />
+  <meta name="description" content="A V C TECH ajuda empresas a crescer com estrutura comercial, presença profissional, consultoria estratégica e soluções tecnológicas." />
   <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#050505" />
+
+  <link rel="canonical" href="https://comercialvctechwc-hash.github.io/vctech-site/index.html" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
   <meta property="og:title" content="V C TECH | Vendas, Consultoria & Tecnologia" />
-  <meta property="og:description" content="Serviços de vendas, consultoria comercial e tecnologia para empresas que buscam mais estrutura, posicionamento e profissionalismo." />
+  <meta property="og:description" content="Transformamos atendimento comum em estrutura profissional, presença comercial e posicionamento mais forte para empresas." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://comercialvctechwc-hash.github.io/vctech-site/index.html" />
-  <link rel="canonical" href="https://comercialvctechwc-hash.github.io/vctech-site/index.html" />
+  <meta property="og:image" content="https://comercialvctechwc-hash.github.io/vctech-site/og-image.jpg" />
+  <meta property="og:image:alt" content="V C TECH - Vendas, Consultoria & Tecnologia" />
+  <meta property="og:site_name" content="V C TECH" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="V C TECH | Vendas, Consultoria & Tecnologia" />
+  <meta name="twitter:description" content="Estrutura comercial, presença profissional e soluções estratégicas para empresas." />
+  <meta name="twitter:image" content="https://comercialvctechwc-hash.github.io/vctech-site/og-image.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA",
+    "url": "https://comercialvctechwc-hash.github.io/vctech-site/index.html",
+    "logo": "https://comercialvctechwc-hash.github.io/vctech-site/logo.png",
+    "image": "https://comercialvctechwc-hash.github.io/vctech-site/og-image.jpg",
+    "telephone": "+55-47-9770-1300",
+    "email": "adm@vctechsc.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av Osmar de Souza Nunes, 365, Sala 01, Pioneiros",
+      "addressLocality": "Balneário Camboriú",
+      "addressRegion": "SC",
+      "postalCode": "88.331-070",
+      "addressCountry": "BR"
+    },
+    "sameAs": [
+      "https://wa.me/554797701300"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+55-47-9770-1300",
+      "contactType": "customer service",
+      "areaServed": "BR",
+      "availableLanguage": "Portuguese"
+    }
+  }
+  </script>
+
   <style>
     :root {
       --bg-primary: #050505;
@@ -19,14 +66,13 @@
       --accent-primary: #2563eb;
       --accent-secondary: #3b82f6;
       --accent-light: #60a5fa;
+      --accent-whatsapp: #25D366;
       --text-primary: #f8fafc;
       --text-secondary: #cbd5e1;
       --text-muted: #94a3b8;
       --border-color: rgba(148, 163, 184, 0.12);
       --shadow-hard: 0 18px 45px rgba(0, 0, 0, 0.42);
       --radius-xl: 22px;
-      --radius-lg: 16px;
-      --radius-md: 12px;
     }
 
     * {
@@ -321,7 +367,7 @@
     }
 
     .hero-content {
-      max-width: 830px;
+      max-width: 900px;
       animation: fadeInUp 0.65s ease-out;
     }
 
@@ -340,13 +386,26 @@
       box-shadow: inset 0 0 18px rgba(37,99,235,0.06);
     }
 
+    .hero-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      padding: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      box-shadow: 0 0 22px rgba(37,99,235,0.38);
+    }
+
     .hero h1 {
-      font-size: clamp(42px, 6vw, 68px);
-      line-height: 1.1;
-      letter-spacing: -2px;
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.06;
+      letter-spacing: -2.2px;
       font-weight: 800;
-      margin-bottom: 24px;
-      max-width: 900px;
+      margin-bottom: 22px;
+      max-width: 980px;
     }
 
     .hero p {
@@ -355,6 +414,23 @@
       font-size: 18px;
       line-height: 1.85;
       margin-bottom: 36px;
+    }
+
+    .hero-authority {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .authority-pill {
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .hero-cta {
@@ -448,22 +524,33 @@
       line-height: 1.85;
     }
 
-    .section-icon {
-      width: 48px;
-      height: 48px;
+    .section-icon,
+    .hero-icon,
+    .card-badge,
+    .diff-icon,
+    .contact-icon,
+    .btn-icon,
+    .card-toggle-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .section-icon {
+      width: 48px;
+      height: 48px;
+      color: var(--accent-light);
       flex-shrink: 0;
     }
 
-    .section-icon svg,
     .hero-icon svg,
+    .section-icon svg,
     .card-badge svg,
     .diff-icon svg,
     .contact-icon svg,
     .btn-icon svg,
-    .card-toggle-icon svg {
+    .card-toggle-icon svg,
+    .float-whatsapp svg {
       width: 100%;
       height: 100%;
       stroke: currentColor;
@@ -473,31 +560,9 @@
       stroke-linejoin: round;
     }
 
-    .hero-icon,
-    .card-badge,
-    .diff-icon,
-    .contact-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      box-shadow: 0 0 22px rgba(37,99,235,0.38);
-    }
-
-    .hero-icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      padding: 4px;
-    }
-
     .btn-icon {
       width: 18px;
       height: 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       color: currentColor;
     }
 
@@ -507,6 +572,9 @@
       height: 62px;
       border-radius: 16px;
       margin-bottom: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      box-shadow: 0 0 22px rgba(37,99,235,0.38);
     }
 
     .diff-icon {
@@ -514,10 +582,9 @@
       height: 70px;
       border-radius: 18px;
       margin: 0 auto 18px;
-    }
-
-    .section-icon {
-      color: var(--accent-light);
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      box-shadow: 0 0 22px rgba(37,99,235,0.38);
     }
 
     .highlights-grid,
@@ -660,9 +727,6 @@
       height: 34px;
       min-width: 34px;
       border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       color: var(--accent-light);
       background: rgba(37,99,235,0.1);
       border: 1px solid rgba(96,165,250,0.18);
@@ -1025,6 +1089,36 @@
       border: 1px solid var(--border-color);
     }
 
+    .float-whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #1fb958);
+      color: white;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35), 0 0 22px rgba(37, 211, 102, 0.35);
+      z-index: 999;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: whatsappPulse 2.2s infinite;
+    }
+
+    .float-whatsapp:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42), 0 0 26px rgba(37, 211, 102, 0.45);
+    }
+
+    .float-whatsapp svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    @keyframes whatsappPulse {
+      0%, 100% { box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(37, 211, 102, 0.38); }
+      50% { box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35), 0 0 0 14px rgba(37, 211, 102, 0); }
+    }
+
     footer {
       position: relative;
       z-index: 10;
@@ -1156,10 +1250,6 @@
         letter-spacing: -1.4px;
       }
 
-      .section-header h2 {
-        flex-direction: column;
-      }
-
       .footer-grid {
         grid-template-columns: 1fr;
       }
@@ -1173,6 +1263,13 @@
       .cta-box,
       .modal-content {
         padding: 26px;
+      }
+
+      .float-whatsapp {
+        width: 58px;
+        height: 58px;
+        right: 16px;
+        bottom: 16px;
       }
     }
 
@@ -1241,11 +1338,18 @@
             Vendas • Consultoria • Tecnologia
           </div>
 
-          <h1>Estrutura comercial com presença profissional, clareza estratégica e foco em resultado</h1>
+          <h1>Transformamos atendimento comum em estrutura profissional que fortalece presença, posicionamento e resultado</h1>
 
           <p>
-            A V C TECH oferece serviços de vendas, consultoria comercial e apoio tecnológico para empresas que desejam crescer com mais organização, comunicação profissional, posicionamento sólido e melhor experiência no relacionamento com seus clientes.
+            A V C TECH ajuda empresas a se apresentarem melhor, se comunicarem com mais clareza e estruturarem sua atuação comercial com mais organização, estratégia e credibilidade.
           </p>
+
+          <div class="hero-authority">
+            <div class="authority-pill">Atuação institucional e comercial</div>
+            <div class="authority-pill">Presença profissional para empresas</div>
+            <div class="authority-pill">Balneário Camboriú • SC</div>
+            <div class="authority-pill">CNPJ ativo • canais oficiais</div>
+          </div>
 
           <div class="hero-cta">
             <a href="https://wa.me/554797701300" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
@@ -1297,7 +1401,7 @@
               <div class="card-extra">
                 <div class="card-extra-content">
                   <strong>Complemento</strong>
-                  Isso ajuda a empresa a transmitir mais confiança, melhorar a primeira impressão e alinhar melhor sua apresentação com o nível do serviço que oferece.
+                  Uma empresa bem apresentada transmite mais confiança, reduz objeções e melhora a percepção de valor antes mesmo do fechamento.
                 </div>
               </div>
             </div>
@@ -1323,7 +1427,7 @@
               <div class="card-extra">
                 <div class="card-extra-content">
                   <strong>Complemento</strong>
-                  Um atendimento claro reduz ruído, acelera entendimento da demanda e melhora a percepção de organização e seriedade da empresa.
+                  Atendimento claro evita ruído, melhora entendimento da demanda e transmite organização desde o primeiro contato.
                 </div>
               </div>
             </div>
@@ -1350,7 +1454,7 @@
               <div class="card-extra">
                 <div class="card-extra-content">
                   <strong>Complemento</strong>
-                  A integração entre essas frentes evita comunicação fragmentada e ajuda a empresa a ter mais coerência no atendimento e no posicionamento.
+                  Quando a empresa alinha comunicação, processo e tecnologia, ela ganha coerência e melhora sua atuação como um todo.
                 </div>
               </div>
             </div>
@@ -1384,12 +1488,12 @@
               A <span style="color: var(--text-primary); font-weight: 700;">V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</span> atua na prestação de serviços voltados ao ambiente comercial e tecnológico, apoiando empresas que desejam estruturar melhor sua comunicação, sua apresentação institucional e seu relacionamento com clientes.
             </p>
             <p>
-              Nosso objetivo é contribuir para que cada empresa tenha uma presença mais sólida, um contato mais profissional com o mercado e uma base mais organizada para crescimento e posicionamento.
+              Nosso foco não é apenas apresentar serviços, mas ajudar empresas a se posicionarem com mais clareza, profissionalismo e coerência diante do mercado.
             </p>
             <ul>
               <li>Atuação comercial, consultiva e tecnológica</li>
               <li>Foco em organização, imagem e relacionamento</li>
-              <li>Soluções ajustadas à necessidade de cada empresa</li>
+              <li>Presença profissional alinhada ao negócio</li>
             </ul>
           </div>
 
@@ -1453,7 +1557,7 @@
               <div class="card-extra">
                 <div class="card-extra-content">
                   <strong>Mais detalhes</strong>
-                  Pode incluir revisão de abordagem, ajuste na comunicação com clientes, padronização de processo comercial e fortalecimento da apresentação do serviço.
+                  Pode envolver revisão de abordagem, alinhamento de processo, melhoria na apresentação do serviço e organização do fluxo comercial.
                 </div>
               </div>
             </div>
@@ -1474,7 +1578,7 @@
               <div class="card-extra">
                 <div class="card-extra-content">
                   <strong>Mais detalhes</strong>
-                  Essa frente ajuda a empresa a parecer mais organizada, mais confiável e mais preparada para converter o interesse em relacionamento comercial.
+                  Essa frente ajuda a empresa a parecer mais organizada, mais confiável e mais preparada para sustentar o relacionamento comercial.
                 </div>
               </div>
             </div>
@@ -1495,7 +1599,7 @@
               <div class="card-extra">
                 <div class="card-extra-content">
                   <strong>Mais detalhes</strong>
-                  Pode envolver estruturação de canais, melhoria da experiência de contato, organização de rotinas e apoio à presença digital da empresa.
+                  Pode envolver estruturação de canais, melhoria da experiência de contato e apoio à rotina digital da empresa.
                 </div>
               </div>
             </div>
@@ -1528,15 +1632,12 @@
                   <path d="M13 2L4 14h6l-1 8 9-12h-6z"></path>
                 </svg>
               </div>
-              <div class="card-topline" style="justify-content:center;">
-                <h3>Agilidade no contato</h3>
-                <div class="card-toggle-icon" aria-hidden="true" style="position:absolute; right:0; top:0; margin:0;"></div>
-              </div>
+              <h3>Agilidade no contato</h3>
               <p>Comunicação direta, objetiva e profissional para facilitar o início do relacionamento e o avanço da conversa comercial.</p>
               <div class="card-extra">
                 <div class="card-extra-content">
                   <strong>Complemento</strong>
-                  Agilidade aqui não é pressa: é responder com clareza, reduzir espera desnecessária e manter a conversa organizada do começo ao fim.
+                  Agilidade aqui significa dar retorno com clareza, reduzir espera desnecessária e manter a conversa com direção.
                 </div>
               </div>
             </div>
@@ -1552,15 +1653,12 @@
                   <path d="M22 20V4"></path>
                 </svg>
               </div>
-              <div class="card-topline" style="justify-content:center;">
-                <h3>Visão estratégica</h3>
-                <div class="card-toggle-icon" aria-hidden="true" style="position:absolute; right:0; top:0; margin:0;"></div>
-              </div>
+              <h3>Visão estratégica</h3>
               <p>Atuação pensada para fortalecer apresentação, posicionamento, clareza comercial e organização da empresa.</p>
               <div class="card-extra">
                 <div class="card-extra-content">
                   <strong>Complemento</strong>
-                  O foco está em coerência entre o que a empresa oferece, como ela se apresenta e como ela conduz o relacionamento com o cliente.
+                  O foco é alinhar imagem, discurso e experiência para que a empresa se posicione de forma mais forte e coerente.
                 </div>
               </div>
             </div>
@@ -1575,15 +1673,12 @@
                   <path d="M9 15c1 .8 2 .8 3 .8s2 0 3-.8"></path>
                 </svg>
               </div>
-              <div class="card-topline" style="justify-content:center;">
-                <h3>Parceria profissional</h3>
-                <div class="card-toggle-icon" aria-hidden="true" style="position:absolute; right:0; top:0; margin:0;"></div>
-              </div>
+              <h3>Parceria profissional</h3>
               <p>Relacionamento construído com seriedade, atenção ao detalhe e foco em soluções adequadas ao contexto de cada empresa.</p>
               <div class="card-extra">
                 <div class="card-extra-content">
                   <strong>Complemento</strong>
-                  Isso significa entender a demanda com mais profundidade e evitar respostas genéricas, buscando uma condução mais alinhada à realidade de cada caso.
+                  Isso ajuda a evitar respostas genéricas e torna o contato mais alinhado à realidade e à necessidade de cada caso.
                 </div>
               </div>
             </div>
@@ -1824,7 +1919,7 @@
         </div>
 
         <div class="privacy-note">
-          Os dados informados serão utilizados para contato comercial, atendimento e retorno da sua solicitação, conforme nossa Política de Privacidade.
+          Seus dados serão usados apenas para contato comercial, atendimento e retorno da sua solicitação, conforme nossa Política de Privacidade.
         </div>
 
         <label class="privacy-check" for="privacyConsent">
@@ -1844,6 +1939,20 @@
       </form>
     </div>
   </div>
+
+  <a
+    href="https://wa.me/554797701300"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="float-whatsapp"
+    aria-label="Falar no WhatsApp"
+    title="Falar no WhatsApp"
+  >
+    <svg viewBox="0 0 24 24">
+      <path d="M20 11.5A8 8 0 0 1 8.3 18.7L4 20l1.3-4.1A8 8 0 1 1 20 11.5z"></path>
+      <path d="M9.5 9.5c.3 1.2 1.5 2.6 2.7 3.3 1.2.7 2.5 1 3.3.8"></path>
+    </svg>
+  </a>
 
   <footer>
     <div class="container">
@@ -1934,9 +2043,8 @@
 
     interactiveCards.forEach((card) => {
       card.addEventListener('click', (e) => {
-        const clickedFaq = e.target.closest('.faq-question');
         const clickedLink = e.target.closest('a, button, input, textarea');
-        if (clickedFaq || clickedLink) return;
+        if (clickedLink) return;
         card.classList.toggle('active');
       });
 
