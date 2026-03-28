@@ -39,6 +39,7 @@
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
+      padding-top: 80px;
     }
 
     .bg-streaks {
@@ -234,10 +235,6 @@
       color: var(--accent-primary);
     }
 
-    body {
-      padding-top: 80px;
-    }
-
     .content-section {
       padding: 100px 0;
       position: relative;
@@ -293,7 +290,7 @@
       line-height: 1.8;
     }
 
-    .content-main ul, .content-main ol {
+    .content-main ul {
       margin-left: 20px;
       margin-bottom: 20px;
       color: var(--text-secondary);
@@ -303,6 +300,14 @@
       margin-bottom: 10px;
       font-size: 16px;
       line-height: 1.8;
+    }
+
+    .update-box {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      font-size: 14px;
+      color: var(--text-muted);
     }
 
     footer {
@@ -359,11 +364,6 @@
       font-size: 14px;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -394,7 +394,7 @@
           <a href="index.html#faq">FAQ</a>
           <a href="index.html#contact">Contato</a>
         </div>
-        <button class="hamburger" id="hamburger">
+        <button class="hamburger" id="hamburger" aria-label="Abrir menu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -413,64 +413,79 @@
       <div class="container">
         <div class="content-header">
           <h1>Política de Privacidade</h1>
-          <p>Entenda como coletamos, usamos e protegemos seus dados pessoais</p>
+          <p>Entenda como coletamos, utilizamos, armazenamos e protegemos seus dados pessoais em nosso site e em nossos canais de atendimento.</p>
         </div>
 
         <div class="content-main">
           <h2>1. Introdução</h2>
-          <p>A V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA respeita a privacidade de seus usuários e está comprometida em ser transparente sobre as práticas de coleta e uso de dados.</p>
-          <p>Esta Política de Privacidade explica como coletamos, usamos, divulgamos e salvaguardamos suas informações quando você visita nosso site e utiliza nossos serviços.</p>
+          <p>A V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA respeita a privacidade dos seus usuários e está comprometida com a transparência no tratamento de dados pessoais.</p>
+          <p>Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos, compartilhamos e protegemos suas informações quando você acessa nosso site, entra em contato conosco ou utiliza nossos serviços.</p>
 
           <h2>2. Informações que Coletamos</h2>
-          <p>Podemos coletar informações sobre você de diferentes formas:</p>
+          <p>Podemos coletar informações pessoais e técnicas por diferentes meios, incluindo:</p>
           <ul>
-            <li><strong>Informações que você fornece diretamente:</strong> Nome completo, endereço de e-mail, número de telefone, empresa, cargo e qualquer outra informação que você opte por compartilhar através de formulários.</li>
-            <li><strong>Informações coletadas automaticamente:</strong> Tipo de navegador, endereço IP, páginas visitadas, tempo gasto no site, dados de cliques e navegação, através de cookies.</li>
-            <li><strong>Informações de terceiros:</strong> Podemos receber informações sobre você de parceiros comerciais ou serviços de análise.</li>
+            <li><strong>Informações fornecidas diretamente pelo usuário:</strong> nome completo, e-mail, telefone, empresa, cargo e demais dados enviados voluntariamente em formulários, atendimentos ou contatos comerciais.</li>
+            <li><strong>Informações coletadas automaticamente:</strong> endereço IP, tipo de navegador, páginas acessadas, tempo de navegação, dispositivo utilizado, cliques e interações no site.</li>
+            <li><strong>Informações recebidas de terceiros:</strong> dados eventualmente recebidos de parceiros, ferramentas de marketing, análise ou integração comercial, sempre dentro da legalidade aplicável.</li>
           </ul>
 
           <h2>3. Como Usamos Suas Informações</h2>
-          <p>Utilizamos as informações coletadas para:</p>
+          <p>Utilizamos os dados coletados para:</p>
           <ul>
             <li>Fornecer, manter e melhorar nossos serviços</li>
-            <li>Responder a suas dúvidas e solicitações</li>
-            <li>Enviar comunicações comerciais e atualizações (com seu consentimento)</li>
-            <li>Análise de uso para entender como você interage com nossos serviços</li>
-            <li>Conformidade com obrigações legais</li>
-            <li>Prevenção de fraude e segurança</li>
+            <li>Responder a dúvidas, solicitações e atendimentos</li>
+            <li>Enviar comunicações institucionais, comerciais e operacionais</li>
+            <li>Encaminhar propostas, apresentações, condições comerciais e informações sobre serviços</li>
+            <li>Analisar a navegação e o desempenho do site</li>
+            <li>Garantir segurança, prevenção à fraude e conformidade legal</li>
           </ul>
+          <p>O tratamento dos dados poderá ocorrer com base no consentimento do titular e/ou no legítimo interesse da empresa, conforme aplicável, nos termos da Lei nº 13.709/2018 (LGPD).</p>
 
-          <h2>4. Compartilhamento de Informações</h2>
-          <p>Não compartilhamos suas informações pessoais com terceiros sem seu consentimento, exceto quando exigido por lei ou necessário para prestar nossos serviços.</p>
+          <h2>4. Comunicações Comerciais</h2>
+          <p>Ao fornecer seus dados por meio do site, formulários ou canais de atendimento, o usuário autoriza o contato da V C TECH para envio de informações comerciais, propostas, apresentações de serviços, atualizações e comunicações relacionadas ao relacionamento profissional mantido com a empresa.</p>
+          <p>O titular poderá solicitar a interrupção dessas comunicações a qualquer momento, mediante contato pelos canais oficiais informados nesta política.</p>
 
-          <h2>5. Segurança de Dados</h2>
-          <p>Implementamos medidas técnicas e organizacionais adequadas para proteger suas informações pessoais. No entanto, nenhum método de transmissão pela Internet é 100% seguro.</p>
+          <h2>5. Compartilhamento de Informações</h2>
+          <p>Não comercializamos dados pessoais. O compartilhamento poderá ocorrer apenas quando necessário para execução dos serviços, cumprimento de obrigação legal, proteção de direitos da empresa ou mediante consentimento do titular.</p>
 
-          <h2>6. Seus Direitos</h2>
-          <p>De acordo com a Lei Geral de Proteção de Dados (LGPD), você tem direito a:</p>
+          <h2>6. Segurança dos Dados</h2>
+          <p>Adotamos medidas técnicas e organizacionais compatíveis para proteger os dados pessoais contra acesso não autorizado, uso indevido, alteração, divulgação ou destruição. Ainda assim, nenhum ambiente digital é totalmente isento de riscos.</p>
+
+          <h2>7. Direitos do Titular</h2>
+          <p>Nos termos da LGPD, o titular dos dados poderá solicitar, quando aplicável:</p>
           <ul>
-            <li>Acessar seus dados pessoais</li>
-            <li>Corrigir dados imprecisos</li>
-            <li>Solicitar a exclusão de seus dados</li>
-            <li>Limitar o tratamento de seus dados</li>
-            <li>Revogar seu consentimento</li>
+            <li>Confirmação da existência de tratamento</li>
+            <li>Acesso aos dados pessoais</li>
+            <li>Correção de dados incompletos, inexatos ou desatualizados</li>
+            <li>Anonimização, bloqueio ou eliminação de dados desnecessários</li>
+            <li>Portabilidade, quando cabível</li>
+            <li>Revogação do consentimento</li>
+            <li>Informações sobre compartilhamento de dados</li>
           </ul>
-          <p>Para exercer esses direitos, entre em contato: adm@vctechsc.com</p>
+          <p>Para exercer esses direitos, entre em contato pelo e-mail: adm@vctechsc.com</p>
 
-          <h2>7. Cookies</h2>
-          <p>Nosso site usa cookies para melhorar sua experiência. Você pode controlar os cookies através das configurações do seu navegador.</p>
+          <h2>8. Cookies e Tecnologias Semelhantes</h2>
+          <p>Nosso site pode utilizar cookies e tecnologias semelhantes para melhorar a experiência do usuário, analisar navegação, medir desempenho e apoiar estratégias institucionais e comerciais. Você pode gerenciar cookies nas configurações do seu navegador.</p>
 
-          <h2>8. Alterações a Esta Política</h2>
-          <p>Podemos atualizar esta Política de Privacidade periodicamente. Recomendamos que você revise esta política regularmente.</p>
+          <h2>9. Retenção dos Dados</h2>
+          <p>Os dados serão armazenados pelo tempo necessário para cumprir as finalidades descritas nesta política, respeitando obrigações legais, regulatórias e a necessidade de resguardar direitos da empresa.</p>
 
-          <h2>9. Contato</h2>
-          <p>Se você tiver dúvidas sobre esta política, entre em contato:</p>
+          <h2>10. Alterações nesta Política</h2>
+          <p>Esta Política de Privacidade poderá ser atualizada a qualquer momento para refletir melhorias operacionais, adequações legais ou mudanças nos serviços prestados. Recomendamos a leitura periódica desta página.</p>
+
+          <h2>11. Contato</h2>
+          <p>Em caso de dúvidas sobre esta Política de Privacidade ou sobre o tratamento dos seus dados, entre em contato pelos canais abaixo:</p>
           <ul>
+            <li><strong>Empresa:</strong> V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</li>
             <li><strong>Email:</strong> adm@vctechsc.com</li>
             <li><strong>WhatsApp:</strong> +55 47 9770-1300</li>
-            <li><strong>Endereço:</strong> Av Osmar de Souza Nunes, 365 - Balneário Camboriú - SC</li>
+            <li><strong>Endereço:</strong> Av Osmar de Souza Nunes, 365, Sala 01, Pioneiros, Balneário Camboriú - SC, CEP 88.331-070</li>
             <li><strong>CNPJ:</strong> 58.313.203/0001-18</li>
           </ul>
+
+          <div class="update-box">
+            <p>Última atualização: 27 de março de 2026</p>
+          </div>
         </div>
       </div>
     </section>
@@ -483,10 +498,10 @@
           <h4>V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</h4>
           <p>CNPJ: 58.313.203/0001-18</p>
           <p>Empresa com situação cadastral ativa</p>
-<div class="footer-links">
-  <a href="privacy-policy.html">Política de Privacidade</a>
-  <a href="terms-of-service.html">Termos de Serviço</a>
-</div>
+          <div class="footer-links">
+            <a href="privacy-policy.html">Política de Privacidade</a>
+            <a href="terms-of-service.html">Termos de Serviço</a>
+          </div>
         </div>
         <div>
           <h4>Localização</h4>
@@ -504,6 +519,7 @@
   <script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
+    const nav = document.getElementById('navBar');
 
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
@@ -516,10 +532,9 @@
     }
 
     let lastScrollTop = 0;
-    const nav = document.getElementById('navBar');
 
     window.addEventListener('scroll', () => {
-      let currentScroll = window.scrollY;
+      const currentScroll = window.scrollY;
       if (currentScroll > lastScrollTop && currentScroll > 100) {
         nav.classList.add('hidden');
       } else {
