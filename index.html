@@ -6,21 +6,29 @@
   <title>V C TECH | Vendas, Consultoria & Tecnologia</title>
   <meta name="description" content="A V C TECH presta serviços de vendas, consultoria comercial e tecnologia para empresas que desejam crescer com estrutura, estratégia e presença profissional." />
   <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="V C TECH | Vendas, Consultoria & Tecnologia" />
+  <meta property="og:description" content="Serviços de vendas, consultoria comercial e tecnologia para empresas que buscam mais estrutura, posicionamento e profissionalismo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://comercialvctechwc-hash.github.io/vctech-site/index.html" />
   <link rel="canonical" href="https://comercialvctechwc-hash.github.io/vctech-site/index.html" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #0f0f0f;
-      --bg-secondary: #1a1a1a;
-      --bg-tertiary: #242424;
+      --bg-primary: #050505;
+      --bg-secondary: #0f0f0f;
+      --bg-tertiary: #171717;
+      --bg-card: rgba(19, 28, 52, 0.55);
       --accent-primary: #2563eb;
       --accent-secondary: #3b82f6;
       --accent-light: #60a5fa;
+      --accent-soft: rgba(59, 130, 246, 0.16);
       --text-primary: #f8fafc;
       --text-secondary: #cbd5e1;
       --text-muted: #94a3b8;
-      --border-color: rgba(148, 163, 184, 0.1);
-      --shadow-hard: 0 20px 50px rgba(0, 0, 0, 0.4);
+      --border-color: rgba(148, 163, 184, 0.12);
+      --shadow-hard: 0 18px 45px rgba(0, 0, 0, 0.42);
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
     }
 
     * {
@@ -31,30 +39,53 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 100px;
+      scroll-padding-top: 95px;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
       background: #000;
       color: var(--text-primary);
       line-height: 1.6;
-      position: relative;
       overflow-x: hidden;
-      padding-top: 100px;
+      padding-top: 95px;
+      position: relative;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .bg-streaks {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       z-index: 1;
       pointer-events: none;
-      background: linear-gradient(90deg, #000 0%, #0a0e27 25%, #000 50%, #0a0e27 75%, #000 100%);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.18), transparent 30%),
+        radial-gradient(circle at 85% 35%, rgba(59, 130, 246, 0.14), transparent 28%),
+        linear-gradient(90deg, #000 0%, #060b1d 25%, #000 50%, #071127 75%, #000 100%);
       background-size: 200% 100%;
       animation: streamBg 20s linear infinite;
+    }
+
+    .streak {
+      position: absolute;
+      height: 2px;
+      width: 45%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(37, 99, 235, 0.9),
+        rgba(255, 255, 255, 0.55),
+        rgba(37, 99, 235, 0.85),
+        transparent
+      );
+      filter: blur(0.4px);
+      box-shadow: 0 0 24px rgba(37, 99, 235, 0.8), 0 0 50px rgba(255,255,255,0.18);
+      animation: streak 8s linear infinite;
+      opacity: 0;
     }
 
     @keyframes streamBg {
@@ -62,25 +93,11 @@
       100% { background-position: -200% 0%; }
     }
 
-    .streak {
-      position: absolute;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.8), rgba(255, 255, 255, 0.6), rgba(37, 99, 235, 0.8), transparent);
-      animation: streak 6s linear infinite;
-      box-shadow: 0 0 20px rgba(37, 99, 235, 0.8), 0 0 40px rgba(255, 255, 255, 0.4);
-    }
-
     @keyframes streak {
-      0% {
-        left: -100%;
-        opacity: 0;
-      }
+      0% { left: -50%; opacity: 0; }
       10% { opacity: 1; }
       90% { opacity: 1; }
-      100% {
-        left: 100%;
-        opacity: 0;
-      }
+      100% { left: 110%; opacity: 0; }
     }
 
     .container {
@@ -90,156 +107,137 @@
       z-index: 10;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
     .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      backdrop-filter: blur(10px);
-      background: rgba(15, 15, 15, 0.95);
-      border-bottom: 1px solid var(--border-color);
-      height: 100px;
+      height: 95px;
       display: flex;
       align-items: center;
+      background: rgba(10, 10, 12, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
       transition: transform 0.3s ease;
       overflow: hidden;
-    }
-
-    .nav::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.25), rgba(255, 255, 255, 0.15), transparent);
-      animation: navLightStreak 4s linear infinite;
-      pointer-events: none;
-      z-index: 50;
-    }
-
-    @keyframes navLightStreak {
-      0% { left: -100%; }
-      100% { left: 100%; }
     }
 
     .nav.hidden {
       transform: translateY(-100%);
     }
 
-    .nav-inner {
+    .nav::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
       width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.18), rgba(255,255,255,0.1), transparent);
+      animation: navLight 4.5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes navLight {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 40px;
+      gap: 30px;
+      width: 100%;
       position: relative;
-      z-index: 10;
+      z-index: 2;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      transition: all 0.3s ease;
+      gap: 14px;
       position: relative;
+      min-width: 0;
     }
 
     .brand::before {
-      content: '';
+      content: "";
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 140px;
-      height: 140px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.7) 0%, rgba(59, 130, 246, 0.35) 40%, transparent 70%);
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      animation: strongGlowPulse 2.2s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(37,99,235,0.5) 0%, rgba(59,130,246,0.24) 42%, transparent 72%);
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      filter: blur(12px);
       z-index: -1;
-      filter: blur(15px);
+      animation: glowPulse 2.4s ease-in-out infinite;
     }
 
-    @keyframes strongGlowPulse {
-      0%, 100% {
-        box-shadow: 0 0 30px rgba(37, 99, 235, 0.7), 0 0 60px rgba(59, 130, 246, 0.35);
-        transform: translate(-50%, -50%) scale(1);
-      }
-      50% {
-        box-shadow: 0 0 45px rgba(37, 99, 235, 0.9), 0 0 90px rgba(59, 130, 246, 0.55);
-        transform: translate(-50%, -50%) scale(1.06);
-      }
+    @keyframes glowPulse {
+      0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.85; }
+      50% { transform: translateY(-50%) scale(1.08); opacity: 1; }
     }
 
     .brand img {
-      height: 110px;
+      height: 88px;
       width: auto;
-      transition: all 0.3s ease;
-      position: relative;
-      z-index: 2;
-      filter: drop-shadow(0 0 22px rgba(37, 99, 235, 0.6));
+      filter: drop-shadow(0 0 22px rgba(37, 99, 235, 0.55));
+      transition: transform 0.3s ease, filter 0.3s ease;
+      flex-shrink: 0;
     }
 
     .brand:hover img {
-      filter: drop-shadow(0 0 34px rgba(37, 99, 235, 0.9))
-              drop-shadow(0 0 16px rgba(255, 255, 255, 0.5))
-              brightness(1.15);
-      transform: scale(1.04);
+      transform: scale(1.03);
+      filter: drop-shadow(0 0 28px rgba(37, 99, 235, 0.85));
     }
 
     .brand-text {
+      font-size: 19px;
       font-weight: 700;
-      font-size: 20px;
-      letter-spacing: -0.5px;
-      position: relative;
-      z-index: 2;
+      letter-spacing: -0.4px;
       background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
       align-items: center;
-      flex: 1;
       justify-content: flex-end;
-      position: relative;
-      z-index: 2;
       flex-wrap: wrap;
+      gap: 28px;
+      flex: 1;
     }
 
     .nav-links a {
+      color: var(--text-secondary);
       font-size: 14px;
       font-weight: 500;
-      color: var(--text-secondary);
       position: relative;
-      transition: all 0.3s ease;
+      transition: 0.3s ease;
     }
 
     .nav-links a::after {
-      content: '';
+      content: "";
       position: absolute;
-      bottom: -5px;
       left: 0;
+      bottom: -6px;
       width: 0;
       height: 2px;
       background: linear-gradient(90deg, var(--accent-primary), var(--accent-light));
+      box-shadow: 0 0 12px rgba(37,99,235,0.6);
       transition: width 0.3s ease;
-      box-shadow: 0 0 10px var(--accent-primary);
     }
 
     .nav-links a:hover {
       color: var(--text-primary);
-      text-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+      text-shadow: 0 0 12px rgba(59,130,246,0.32);
     }
 
     .nav-links a:hover::after {
@@ -249,24 +247,23 @@
     .hamburger {
       display: none;
       flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
+      gap: 5px;
       background: none;
       border: none;
+      cursor: pointer;
       padding: 10px;
-      position: relative;
-      z-index: 2;
     }
 
     .hamburger span {
-      width: 25px;
+      width: 26px;
       height: 3px;
       background: var(--text-primary);
-      transition: all 0.3s ease;
+      transition: 0.3s ease;
+      border-radius: 999px;
     }
 
     .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(12px, 12px);
+      transform: rotate(45deg) translate(6px, 6px);
     }
 
     .hamburger.active span:nth-child(2) {
@@ -274,21 +271,21 @@
     }
 
     .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(8px, -8px);
+      transform: rotate(-45deg) translate(6px, -6px);
     }
 
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 100px;
+      top: 95px;
       right: 0;
       width: 100%;
       max-width: 320px;
-      height: calc(100vh - 100px);
-      background: rgba(15, 15, 15, 0.98);
-      border-left: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
+      height: calc(100vh - 95px);
       z-index: 99;
+      background: rgba(10, 10, 12, 0.97);
+      backdrop-filter: blur(12px);
+      border-left: 1px solid var(--border-color);
       transform: translateX(100%);
       transition: transform 0.3s ease;
       overflow-y: auto;
@@ -301,58 +298,65 @@
 
     .mobile-menu a {
       display: block;
-      padding: 16px 24px;
-      color: var(--text-secondary);
+      padding: 18px 24px;
       border-bottom: 1px solid var(--border-color);
-      transition: all 0.3s ease;
+      color: var(--text-secondary);
+      transition: 0.3s ease;
     }
 
     .mobile-menu a:hover {
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--accent-primary);
+      background: rgba(37,99,235,0.1);
+      color: var(--accent-light);
+    }
+
+    .hero,
+    .section {
+      position: relative;
+      z-index: 10;
     }
 
     .hero {
-      min-height: calc(100vh - 100px);
+      min-height: calc(100vh - 95px);
       display: flex;
       align-items: center;
-      padding: 60px 0;
-      position: relative;
+      padding: 70px 0 60px;
     }
 
     .hero-content {
-      max-width: 800px;
-      animation: fadeInUp 0.6s ease-out;
+      max-width: 830px;
+      animation: fadeInUp 0.65s ease-out;
     }
 
     .hero-tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      background: rgba(37, 99, 235, 0.1);
-      border: 1px solid var(--accent-primary);
-      border-radius: 50px;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(37,99,235,0.08);
+      border: 1px solid rgba(59,130,246,0.35);
+      color: var(--accent-light);
       font-size: 13px;
-      font-weight: 600;
-      color: var(--accent-primary);
+      font-weight: 700;
       margin-bottom: 24px;
+      box-shadow: inset 0 0 18px rgba(37,99,235,0.06);
     }
 
     .hero h1 {
       font-size: clamp(42px, 6vw, 68px);
-      line-height: 1.12;
-      font-weight: 800;
+      line-height: 1.1;
       letter-spacing: -2px;
+      font-weight: 800;
       margin-bottom: 24px;
+      max-width: 900px;
     }
 
     .hero p {
-      font-size: 18px;
-      color: var(--text-secondary);
-      margin-bottom: 36px;
-      line-height: 1.8;
       max-width: 760px;
+      color: var(--text-secondary);
+      font-size: 18px;
+      line-height: 1.85;
+      margin-bottom: 36px;
     }
 
     .hero-cta {
@@ -362,64 +366,65 @@
     }
 
     .btn {
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 15px;
-      cursor: pointer;
       border: none;
-      transition: all 0.3s ease;
+      cursor: pointer;
+      border-radius: 14px;
+      padding: 15px 28px;
+      font-size: 15px;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       position: relative;
       overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
 
     .btn::before {
-      content: '';
+      content: "";
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.25);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.6s ease, height 0.6s ease;
+      top: 0;
+      left: -120%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+      transition: none;
     }
 
-    .btn:active::before {
-      width: 300px;
-      height: 300px;
+    .btn:hover::before {
+      animation: buttonLight 1.25s ease;
+    }
+
+    @keyframes buttonLight {
+      0% { left: -120%; }
+      100% { left: 120%; }
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      color: white;
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(37,99,235,0.3), inset 0 0 0 1px rgba(255,255,255,0.08);
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 18px 38px rgba(37,99,235,0.38);
     }
 
     .btn-secondary {
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--accent-primary);
-      border: 1px solid var(--accent-primary);
+      background: rgba(37,99,235,0.09);
+      color: var(--accent-light);
+      border: 1px solid rgba(59,130,246,0.35);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
     }
 
     .btn-secondary:hover {
-      background: rgba(37, 99, 235, 0.18);
       transform: translateY(-3px);
+      background: rgba(37,99,235,0.16);
     }
 
     .section {
       padding: 100px 0;
-      position: relative;
-      z-index: 10;
     }
 
     .section-header {
@@ -428,7 +433,7 @@
     }
 
     .section-header h2 {
-      font-size: clamp(36px, 5vw, 48px);
+      font-size: clamp(34px, 5vw, 48px);
       font-weight: 800;
       margin-bottom: 16px;
       display: flex;
@@ -438,135 +443,159 @@
       flex-wrap: wrap;
     }
 
+    .section-header p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
     .section-icon {
-      width: 50px;
-      height: 50px;
-      display: flex;
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .section-icon svg {
+    .section-icon svg,
+    .hero-icon svg,
+    .card-badge svg,
+    .diff-icon svg,
+    .contact-icon svg,
+    .btn-icon svg {
       width: 100%;
       height: 100%;
-      stroke: var(--accent-primary);
+      stroke: currentColor;
       fill: none;
-      stroke-width: 1.5;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .section-header p {
-      font-size: 18px;
-      color: var(--text-secondary);
-      max-width: 750px;
-      margin: 0 auto;
-    }
-
-    .highlights-grid,
-    .about-grid,
-    .portfolio-grid,
-    .testimonials-grid,
-    .diff-grid,
-    .contact-info {
-      display: grid;
-      gap: 30px;
-    }
-
-    .highlights-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-
-    .about-grid {
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: stretch;
-    }
-
-    .portfolio-grid,
-    .testimonials-grid,
-    .diff-grid,
-    .contact-info {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    .card,
-    .portfolio-card,
-    .testimonial-card,
-    .diff-card,
-    .contact-item,
-    .faq-item,
-    .about-box,
-    .about-info {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.08));
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      transition: all 0.3s ease;
-      opacity: 0;
-      animation: fadeInCard 0.6s ease-out forwards;
-    }
-
-    .card:hover,
-    .portfolio-card:hover,
-    .testimonial-card:hover,
-    .diff-card:hover,
-    .contact-item:hover,
-    .faq-item:hover,
-    .about-box:hover,
-    .about-info:hover {
-      border-color: var(--accent-primary);
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(59, 130, 246, 0.12));
-      transform: translateY(-8px);
-    }
-
-    .card {
-      padding: 34px;
-      text-align: left;
-    }
-
-    .card-badge {
+    .hero-icon,
+    .card-badge,
+    .diff-icon,
+    .contact-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 58px;
-      height: 58px;
-      border-radius: 14px;
+      color: #fff;
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      color: white;
-      font-size: 22px;
+      box-shadow: 0 0 22px rgba(37,99,235,0.38);
+    }
+
+    .hero-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      padding: 4px;
+    }
+
+    .btn-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: currentColor;
+    }
+
+    .card-badge,
+    .contact-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 16px;
       margin-bottom: 18px;
     }
 
+    .diff-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      margin: 0 auto 18px;
+    }
+
+    .section-icon {
+      color: var(--accent-light);
+    }
+
+    .highlights-grid,
+    .portfolio-grid,
+    .diff-grid,
+    .testimonials-grid,
+    .contact-info {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: stretch;
+    }
+
+    .card,
+    .about-box,
+    .about-info,
+    .portfolio-card,
+    .diff-card,
+    .testimonial-card,
+    .faq-item,
+    .contact-item,
+    .cta-box {
+      background: linear-gradient(135deg, rgba(37,99,235,0.07), rgba(59,130,246,0.06));
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-hard);
+      transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .card:hover,
+    .about-box:hover,
+    .about-info:hover,
+    .portfolio-card:hover,
+    .diff-card:hover,
+    .testimonial-card:hover,
+    .faq-item:hover,
+    .contact-item:hover,
+    .cta-box:hover {
+      transform: translateY(-8px);
+      border-color: rgba(96,165,250,0.32);
+      background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(59,130,246,0.09));
+    }
+
+    .card,
+    .about-box,
+    .about-info,
+    .diff-card,
+    .testimonial-card,
+    .contact-item {
+      padding: 32px;
+    }
+
     .card h3,
-    .diff-card h3,
-    .portfolio-card h3 {
-      font-size: 20px;
+    .about-box h3,
+    .about-info h3,
+    .portfolio-card h3,
+    .diff-card h3 {
+      font-size: 21px;
       font-weight: 700;
       margin-bottom: 10px;
     }
 
     .card p,
-    .diff-card p,
-    .portfolio-card p {
-      color: var(--text-secondary);
-      font-size: 15px;
-      line-height: 1.8;
-    }
-
-    .about-box,
-    .about-info {
-      padding: 40px;
-    }
-
-    .about-box h3,
-    .about-info h3 {
-      font-size: 24px;
-      margin-bottom: 16px;
-      font-weight: 700;
-    }
-
     .about-box p,
     .about-info p,
-    .about-box li,
-    .about-info li {
+    .portfolio-card p,
+    .diff-card p,
+    .testimonial-text,
+    .contact-value,
+    .faq-answer p {
       color: var(--text-secondary);
       font-size: 15px;
       line-height: 1.85;
@@ -575,9 +604,12 @@
     .about-box ul,
     .about-info ul {
       margin-top: 18px;
-      margin-left: 20px;
       display: grid;
       gap: 10px;
+    }
+
+    .about-box ul {
+      margin-left: 20px;
     }
 
     .institutional-list {
@@ -587,66 +619,70 @@
 
     .institutional-list li {
       padding: 14px 16px;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
+      border-radius: 14px;
       background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-color);
     }
 
     .institutional-list strong {
       display: block;
       color: var(--text-primary);
       margin-bottom: 4px;
+      font-size: 14px;
     }
 
     .portfolio-card {
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .portfolio-image {
-      width: 100%;
-      height: 210px;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.75);
-      font-weight: 600;
-      position: relative;
-      overflow: hidden;
+      padding: 24px;
       text-align: center;
-      padding: 20px;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.12), transparent 35%),
+        linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: rgba(255,255,255,0.82);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      transition: 0.3s ease;
     }
 
     .portfolio-card:hover .portfolio-image {
-      background: linear-gradient(135deg, var(--accent-secondary), var(--accent-light));
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 35%),
+        linear-gradient(135deg, var(--accent-secondary), var(--accent-light));
     }
 
-    .portfolio-content,
-    .diff-card,
-    .testimonial-card,
-    .contact-item {
-      padding: 32px;
+    .portfolio-content {
+      padding: 30px 30px 32px;
     }
 
     .testimonial-header {
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .testimonial-avatar {
-      width: 60px;
-      height: 60px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 20px;
-      color: white;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 0 20px rgba(37,99,235,0.32);
       flex-shrink: 0;
     }
 
@@ -663,30 +699,13 @@
 
     .testimonial-stars {
       color: #fbbf24;
+      letter-spacing: 3px;
       font-size: 14px;
       margin-bottom: 16px;
-      letter-spacing: 3px;
     }
 
     .testimonial-text {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.8;
       font-style: italic;
-    }
-
-    .diff-icon,
-    .contact-icon {
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 18px;
-      font-size: 26px;
-      color: white;
     }
 
     .diff-card,
@@ -695,42 +714,40 @@
     }
 
     .faq-container {
-      max-width: 850px;
+      max-width: 860px;
       margin: 0 auto;
+      display: grid;
+      gap: 16px;
     }
 
     .faq-item {
-      margin-bottom: 16px;
       overflow: hidden;
     }
 
     .faq-question {
       width: 100%;
-      padding: 22px;
       background: none;
       border: none;
       color: var(--text-primary);
-      font-size: 15px;
-      font-weight: 600;
+      text-align: left;
       cursor: pointer;
+      padding: 22px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      text-align: left;
-      transition: all 0.3s ease;
+      gap: 18px;
+      font-size: 15px;
+      font-weight: 700;
     }
 
-    .faq-item:hover .faq-question {
-      color: var(--accent-primary);
-    }
-
-    .faq-icon {
-      transition: transform 0.3s ease;
+    .faq-icon-arrow {
       flex-shrink: 0;
-      margin-left: 16px;
+      color: var(--accent-light);
+      transition: transform 0.3s ease;
+      font-size: 15px;
     }
 
-    .faq-item.active .faq-icon {
+    .faq-item.active .faq-icon-arrow {
       transform: rotate(180deg);
     }
 
@@ -738,56 +755,46 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
-      color: var(--text-secondary);
-      padding: 0 22px;
+      padding: 0 24px;
     }
 
     .faq-answer p {
       padding-bottom: 22px;
-      line-height: 1.8;
     }
 
     .faq-item.active .faq-answer {
-      max-height: 320px;
+      max-height: 300px;
     }
 
     .contact-label {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--accent-primary);
-      font-weight: 700;
+      color: var(--accent-light);
+      font-weight: 800;
       margin-bottom: 8px;
     }
 
-    .contact-value {
-      font-size: 17px;
-      font-weight: 600;
-      line-height: 1.7;
-    }
-
     .contact-value a {
-      color: var(--accent-primary);
+      color: var(--accent-light);
     }
 
     .contact-value a:hover {
-      color: var(--accent-light);
+      color: var(--text-primary);
     }
 
     .contact-note {
       text-align: center;
-      margin-top: 24px;
       color: var(--text-muted);
       font-size: 14px;
+      line-height: 1.8;
+      margin-top: 22px;
     }
 
     .cta-box {
-      margin-top: 60px;
+      margin-top: 56px;
       padding: 38px;
       text-align: center;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(59, 130, 246, 0.12));
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
     }
 
     .cta-box h3 {
@@ -796,22 +803,19 @@
     }
 
     .cta-box p {
+      max-width: 760px;
+      margin: 0 auto 24px;
       color: var(--text-secondary);
-      margin-bottom: 24px;
-      font-size: 16px;
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
     .modal {
       display: none;
       position: fixed;
+      inset: 0;
       z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.82);
-      backdrop-filter: blur(5px);
+      background: rgba(0,0,0,0.82);
+      backdrop-filter: blur(6px);
       align-items: center;
       justify-content: center;
       padding: 20px;
@@ -819,74 +823,74 @@
 
     .modal.active {
       display: flex;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.25s ease;
     }
 
     .modal-content {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 42px;
-      max-width: 560px;
       width: 100%;
-      animation: slideUp 0.3s ease;
+      max-width: 560px;
       max-height: 90vh;
       overflow-y: auto;
+      background: #0d0d12;
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: 0 28px 60px rgba(0,0,0,0.5);
+      animation: slideUp 0.25s ease;
     }
 
     .modal-content h2 {
       font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
     }
 
-    .modal-content .modal-subtitle {
+    .modal-subtitle {
       color: var(--text-secondary);
-      margin-bottom: 28px;
-      line-height: 1.8;
       font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 26px;
     }
 
     .form-group {
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .form-group label {
       display: block;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 8px;
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 13px 16px;
-      background: var(--bg-tertiary);
       border: 1px solid var(--border-color);
-      border-radius: 10px;
+      background: var(--bg-tertiary);
       color: var(--text-primary);
-      font-family: inherit;
-      font-size: 14px;
-      transition: all 0.3s ease;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font: inherit;
+      transition: border-color 0.3s ease, background 0.3s ease;
     }
 
     .form-group input:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: var(--accent-primary);
-      background: rgba(37, 99, 235, 0.05);
+      border-color: rgba(96,165,250,0.45);
+      background: rgba(37,99,235,0.05);
     }
 
     .privacy-note {
       margin-top: 4px;
       padding: 14px 16px;
+      border-radius: 14px;
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border-color);
-      border-radius: 12px;
       color: var(--text-secondary);
       font-size: 13px;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     .privacy-check {
@@ -896,7 +900,7 @@
       margin-top: 18px;
       color: var(--text-secondary);
       font-size: 13px;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     .privacy-check input {
@@ -906,97 +910,98 @@
     }
 
     .privacy-check a {
-      color: var(--accent-primary);
+      color: var(--accent-light);
     }
 
     .privacy-check a:hover {
-      color: var(--accent-light);
+      color: var(--text-primary);
     }
 
     .form-actions {
       display: flex;
       gap: 12px;
-      margin-top: 28px;
       flex-wrap: wrap;
+      margin-top: 24px;
     }
 
     .form-actions button {
       flex: 1 1 180px;
-      padding: 12px;
-      border-radius: 10px;
+      padding: 13px 16px;
+      border-radius: 12px;
       border: none;
-      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.3s ease;
     }
 
     .btn-form-submit {
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      color: white;
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(37,99,235,0.26);
     }
 
     .btn-form-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 16px 36px rgba(37,99,235,0.34);
     }
 
     .btn-form-cancel {
-      background: var(--bg-tertiary);
+      background: rgba(255,255,255,0.04);
       color: var(--text-secondary);
       border: 1px solid var(--border-color);
     }
 
     footer {
-      border-top: 1px solid var(--border-color);
-      padding: 50px 0;
-      color: var(--text-secondary);
       position: relative;
       z-index: 10;
+      border-top: 1px solid var(--border-color);
+      padding: 52px 0;
+      color: var(--text-secondary);
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
+      grid-template-columns: 1.25fr 1fr;
       gap: 40px;
       margin-bottom: 30px;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--accent-primary);
-      transition: all 0.3s ease;
-      padding: 5px 0;
-      border-bottom: 1px solid transparent;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent-light);
-      border-bottom-color: var(--accent-light);
-    }
-
     footer h4 {
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text-primary);
       margin-bottom: 12px;
     }
 
     footer p {
       font-size: 14px;
-      margin-bottom: 8px;
       line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .footer-links a {
+      color: var(--accent-light);
+      font-size: 13px;
+      border-bottom: 1px solid transparent;
+      transition: 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+      border-bottom-color: var(--accent-light);
     }
 
     .footer-divider {
       border-top: 1px solid var(--border-color);
-      padding-top: 30px;
+      padding-top: 28px;
       text-align: center;
       font-size: 14px;
     }
@@ -1009,7 +1014,7 @@
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(26px);
       }
       to {
         opacity: 1;
@@ -1020,7 +1025,7 @@
     @keyframes slideUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px);
       }
       to {
         opacity: 1;
@@ -1028,31 +1033,36 @@
       }
     }
 
-    @keyframes fadeInCard {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 960px) {
+    @media (max-width: 980px) {
       .about-grid {
         grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 768px) {
-      .nav {
-        height: 85px;
+      html {
+        scroll-padding-top: 82px;
       }
 
-      .brand::before {
-        width: 120px;
-        height: 120px;
+      body {
+        padding-top: 82px;
+      }
+
+      .nav {
+        height: 82px;
+      }
+
+      .mobile-menu {
+        top: 82px;
+        height: calc(100vh - 82px);
+      }
+
+      .brand img {
+        height: 72px;
+      }
+
+      .brand-text {
+        font-size: 16px;
       }
 
       .nav-links {
@@ -1063,56 +1073,33 @@
         display: flex;
       }
 
-      .footer-grid {
-        grid-template-columns: 1fr;
+      .hero,
+      .section {
+        padding: 80px 0;
       }
 
       .hero h1 {
-        font-size: 36px;
+        font-size: 38px;
+        letter-spacing: -1.4px;
       }
 
       .section-header h2 {
         flex-direction: column;
       }
 
-      .modal-content {
-        padding: 28px;
+      .footer-grid {
+        grid-template-columns: 1fr;
       }
 
-      .brand img {
-        height: 88px;
-      }
-
-      .brand-text {
-        font-size: 16px;
-      }
-
-      body {
-        padding-top: 85px;
-      }
-
-      html {
-        scroll-padding-top: 85px;
-      }
-
-      .mobile-menu {
-        top: 85px;
-        height: calc(100vh - 85px);
-      }
-
-      .hero,
-      .section {
-        padding: 80px 0;
-      }
-
-      .portfolio-content,
+      .card,
+      .about-box,
+      .about-info,
       .diff-card,
       .testimonial-card,
       .contact-item,
-      .about-box,
-      .about-info,
-      .card {
-        padding: 28px;
+      .cta-box,
+      .modal-content {
+        padding: 26px;
       }
     }
 
@@ -1128,16 +1115,16 @@
 <body>
   <div class="bg-streaks">
     <div class="streak" style="top: 15%; animation-delay: 0s;"></div>
-    <div class="streak" style="top: 35%; animation-delay: 1.5s;"></div>
-    <div class="streak" style="top: 55%; animation-delay: 3s;"></div>
-    <div class="streak" style="top: 75%; animation-delay: 4.5s;"></div>
+    <div class="streak" style="top: 35%; animation-delay: 1.8s;"></div>
+    <div class="streak" style="top: 58%; animation-delay: 3.6s;"></div>
+    <div class="streak" style="top: 78%; animation-delay: 5.4s;"></div>
   </div>
 
   <nav class="nav" id="navBar">
     <div class="container">
       <div class="nav-inner">
         <a href="#top" class="brand" aria-label="Ir para o início">
-          <img src="logo.png" alt="V C TECH Logo">
+          <img src="logo.png" alt="Logo da V C TECH">
           <span class="brand-text">V C TECH</span>
         </a>
 
@@ -1173,48 +1160,83 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-tag">
-            <span style="font-size: 16px;">🚀</span>
+            <span class="hero-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l2.2 4.6L19 10l-4 3.4.8 5.1L12 16.6l-3.8 1.9.8-5.1-4-3.4 4.8-2.4L12 3z"></path>
+              </svg>
+            </span>
             Vendas • Consultoria • Tecnologia
           </div>
 
           <h1>Estrutura comercial com presença profissional, clareza estratégica e foco em resultado</h1>
 
           <p>
-            A V C TECH atua com serviços de vendas, consultoria comercial e tecnologia para empresas que buscam mais organização, melhor posicionamento, atendimento profissional e crescimento com estrutura.
+            A V C TECH oferece serviços de vendas, consultoria comercial e apoio tecnológico para empresas que desejam crescer com mais organização, comunicação profissional, posicionamento sólido e melhor experiência no relacionamento com seus clientes.
           </p>
 
           <div class="hero-cta">
             <a href="https://wa.me/554797701300" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              <i class="fas fa-phone"></i> Falar no WhatsApp
+              <span class="btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20 11.5A8 8 0 0 1 8.3 18.7L4 20l1.3-4.1A8 8 0 1 1 20 11.5z"></path>
+                  <path d="M9.5 9.5c.3 1.2 1.5 2.6 2.7 3.3 1.2.7 2.5 1 3.3.8"></path>
+                </svg>
+              </span>
+              Falar no WhatsApp
             </a>
+
             <button class="btn btn-secondary" onclick="openContactModal()">
-              <i class="fas fa-envelope"></i> Enviar Mensagem
+              <span class="btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 5h16v14H4z"></path>
+                  <path d="M4 7l8 6 8-6"></path>
+                </svg>
+              </span>
+              Enviar Mensagem
             </button>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-label="Destaques da empresa">
+    <section class="section" aria-label="Destaques da V C TECH">
       <div class="container">
         <div class="highlights-grid">
-          <div class="card">
-            <div class="card-badge"><i class="fas fa-building"></i></div>
-            <h3>Atuação profissional</h3>
-            <p>Serviços estruturados para empresas que precisam fortalecer a área comercial, melhorar processos e ampliar presença no mercado.</p>
-          </div>
+          <article class="card">
+            <div class="card-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 21h18"></path>
+                <path d="M5 21V7l7-4 7 4v14"></path>
+                <path d="M9 11h.01"></path>
+                <path d="M15 11h.01"></path>
+              </svg>
+            </div>
+            <h3>Presença profissional</h3>
+            <p>Atuação voltada a empresas que precisam fortalecer sua comunicação, sua apresentação comercial e sua imagem institucional.</p>
+          </article>
 
-          <div class="card">
-            <div class="card-badge"><i class="fas fa-handshake"></i></div>
-            <h3>Relacionamento direto</h3>
-            <p>Atendimento humanizado, comunicação clara e acompanhamento próximo em cada etapa do contato comercial.</p>
-          </div>
+          <article class="card">
+            <div class="card-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 12l3 3 5-6"></path>
+                <path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"></path>
+              </svg>
+            </div>
+            <h3>Clareza no atendimento</h3>
+            <p>Relacionamento direto, comunicação objetiva e postura profissional para facilitar o primeiro contato e a continuidade da conversa.</p>
+          </article>
 
-          <div class="card">
-            <div class="card-badge"><i class="fas fa-laptop-code"></i></div>
+          <article class="card">
+            <div class="card-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 6h16v12H4z"></path>
+                <path d="M8 10h8"></path>
+                <path d="M8 14h5"></path>
+              </svg>
+            </div>
             <h3>Soluções integradas</h3>
-            <p>Consultoria, suporte comercial e tecnologia alinhados para entregar mais organização e presença profissional ao negócio.</p>
-          </div>
+            <p>Vendas, consultoria comercial e tecnologia alinhadas para gerar mais organização, estrutura e confiança para o negócio.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1223,20 +1245,17 @@
       <div class="container">
         <div class="section-header">
           <h2>
-            <div class="section-icon">
+            <span class="section-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M3 21h18"></path>
-                <path d="M5 21V7l7-4 7 4v14"></path>
-                <path d="M9 10h.01"></path>
-                <path d="M15 10h.01"></path>
-                <path d="M9 14h.01"></path>
-                <path d="M15 14h.01"></path>
+                <path d="M5 21V8l7-5 7 5v13"></path>
+                <path d="M10 21v-6h4v6"></path>
               </svg>
-            </div>
+            </span>
             Sobre a V C TECH
           </h2>
           <p>
-            Presença institucional, clareza comercial e estrutura profissional para empresas que desejam crescer com mais consistência.
+            Uma empresa voltada a vendas, consultoria comercial e tecnologia, com foco em presença profissional, organização e apoio ao desenvolvimento empresarial.
           </p>
         </div>
 
@@ -1244,15 +1263,15 @@
           <div class="about-box">
             <h3>Quem somos</h3>
             <p>
-              A <strong>V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</strong> é uma empresa voltada à prestação de serviços em vendas, consultoria comercial e soluções tecnológicas, com foco em organização, posicionamento, atendimento profissional e apoio ao desenvolvimento de empresas.
+              A <span style="color: var(--text-primary); font-weight: 700;">V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</span> atua na prestação de serviços voltados ao ambiente comercial e tecnológico, apoiando empresas que desejam estruturar melhor sua comunicação, sua apresentação institucional e seu relacionamento com clientes.
             </p>
             <p>
-              Nosso trabalho é direcionado para negócios que desejam fortalecer sua presença comercial, melhorar sua estrutura de atendimento e evoluir seus processos com mais clareza, estratégia e profissionalismo.
+              Nosso objetivo é contribuir para que cada empresa tenha uma presença mais sólida, um contato mais profissional com o mercado e uma base mais organizada para crescimento e posicionamento.
             </p>
             <ul>
-              <li>Atuação com foco comercial, consultivo e tecnológico</li>
-              <li>Atendimento institucional e relacionamento profissional</li>
-              <li>Projetos e soluções ajustados à necessidade de cada empresa</li>
+              <li>Atuação comercial, consultiva e tecnológica</li>
+              <li>Foco em organização, imagem e relacionamento</li>
+              <li>Soluções ajustadas à necessidade de cada empresa</li>
             </ul>
           </div>
 
@@ -1272,7 +1291,7 @@
                 Av Osmar de Souza Nunes, 365, Sala 01, Pioneiros, Balneário Camboriú - SC, CEP 88.331-070
               </li>
               <li>
-                <strong>Contato</strong>
+                <strong>Contato Oficial</strong>
                 adm@vctechsc.com • +55 47 9770-1300
               </li>
             </ul>
@@ -1285,45 +1304,45 @@
       <div class="container">
         <div class="section-header">
           <h2>
-            <div class="section-icon">
+            <span class="section-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
+                <rect x="3" y="4" width="7" height="7"></rect>
+                <rect x="14" y="4" width="7" height="7"></rect>
+                <rect x="3" y="15" width="7" height="7"></rect>
+                <rect x="14" y="15" width="7" height="7"></rect>
               </svg>
-            </div>
+            </span>
             Portfólio de atuação
           </h2>
           <p>
-            Exemplos de frentes em que a V C TECH pode atuar com apoio comercial, estrutura e presença profissional.
+            Exemplos de frentes em que a V C TECH pode apoiar empresas com mais estrutura, organização e presença profissional.
           </p>
         </div>
 
         <div class="portfolio-grid">
-          <div class="portfolio-card">
+          <article class="portfolio-card">
             <div class="portfolio-image">Consultoria comercial e reorganização de processos</div>
             <div class="portfolio-content">
               <h3>Reestruturação comercial</h3>
-              <p>Mapeamento de atendimento, fluxo comercial, comunicação com clientes e definição de uma estrutura mais organizada para o negócio.</p>
+              <p>Mapeamento de fluxo, apoio ao atendimento, melhoria de apresentação e organização da frente comercial da empresa.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="portfolio-card">
-            <div class="portfolio-image">Apoio a vendas, operação e posicionamento profissional</div>
+          <article class="portfolio-card">
+            <div class="portfolio-image">Posicionamento institucional e presença profissional</div>
             <div class="portfolio-content">
               <h3>Gestão de presença comercial</h3>
-              <p>Fortalecimento da comunicação da empresa, padronização do contato com clientes e melhoria da percepção profissional da marca.</p>
+              <p>Fortalecimento da comunicação, da apresentação dos serviços e da percepção profissional da marca diante do cliente.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="portfolio-card">
-            <div class="portfolio-image">Soluções tecnológicas e apoio digital</div>
+          <article class="portfolio-card">
+            <div class="portfolio-image">Apoio tecnológico e estrutura digital</div>
             <div class="portfolio-content">
               <h3>Integração tecnológica</h3>
-              <p>Suporte à organização digital do negócio, uso de ferramentas, estrutura de comunicação e melhorias operacionais alinhadas à realidade da empresa.</p>
+              <p>Organização de ferramentas, apoio digital e melhoria operacional alinhados à realidade e à necessidade de cada negócio.</p>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1332,36 +1351,53 @@
       <div class="container">
         <div class="section-header">
           <h2>
-            <div class="section-icon">
+            <span class="section-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                <path d="M12 3l2.2 4.6L19 10l-4 3.4.8 5.1L12 16.6l-3.8 1.9.8-5.1-4-3.4 4.8-2.4L12 3z"></path>
               </svg>
-            </div>
-            Por que escolher a V C TECH
+            </span>
+            Diferenciais da V C TECH
           </h2>
           <p>
-            Uma atuação voltada a clareza, organização e relacionamento profissional com o cliente.
+            Uma atuação orientada a clareza, relacionamento profissional e construção de presença sólida para o negócio.
           </p>
         </div>
 
         <div class="diff-grid">
-          <div class="diff-card">
-            <div class="diff-icon">⚡</div>
+          <article class="diff-card">
+            <div class="diff-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 2L4 14h6l-1 8 9-12h-6z"></path>
+              </svg>
+            </div>
             <h3>Agilidade no contato</h3>
-            <p>Atendimento direto, com comunicação objetiva, postura profissional e acompanhamento próximo da necessidade apresentada.</p>
-          </div>
+            <p>Comunicação direta, objetiva e profissional para facilitar o início do relacionamento e o avanço da conversa comercial.</p>
+          </article>
 
-          <div class="diff-card">
-            <div class="diff-icon">📊</div>
+          <article class="diff-card">
+            <div class="diff-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 20V6"></path>
+                <path d="M10 20V10"></path>
+                <path d="M16 20V13"></path>
+                <path d="M22 20V4"></path>
+              </svg>
+            </div>
             <h3>Visão estratégica</h3>
-            <p>Abordagem comercial e consultiva orientada à organização, posicionamento e melhoria da presença da empresa.</p>
-          </div>
+            <p>Atuação pensada para fortalecer apresentação, posicionamento, clareza comercial e organização da empresa.</p>
+          </article>
 
-          <div class="diff-card">
-            <div class="diff-icon">🤝</div>
+          <article class="diff-card">
+            <div class="diff-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 12c1.2-1.6 2.4-2.4 4-2.4s2.8.8 4 2.4"></path>
+                <path d="M5 12c2-3.2 4.2-4.8 7-4.8s5 1.6 7 4.8"></path>
+                <path d="M9 15c1 .8 2 .8 3 .8s2 0 3-.8"></path>
+              </svg>
+            </div>
             <h3>Parceria profissional</h3>
-            <p>Relacionamento construído com clareza, seriedade e foco em soluções adequadas à realidade de cada negócio.</p>
-          </div>
+            <p>Relacionamento construído com seriedade, atenção ao detalhe e foco em soluções adequadas ao contexto de cada empresa.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1370,20 +1406,22 @@
       <div class="container">
         <div class="section-header">
           <h2>
-            <div class="section-icon">
+            <span class="section-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                <path d="M7 10h7"></path>
+                <path d="M7 14h5"></path>
+                <path d="M5 19l-1 3 3-1h10a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v12a3 3 0 0 0 1 1z"></path>
               </svg>
-            </div>
+            </span>
             Percepção de clientes
           </h2>
           <p>
-            Espaço institucional para apresentar a experiência de clientes, parceiros ou empresas atendidas.
+            Espaço institucional para representar a experiência de clientes e parceiros com a comunicação e a atuação da empresa.
           </p>
         </div>
 
         <div class="testimonials-grid">
-          <div class="testimonial-card">
+          <article class="testimonial-card">
             <div class="testimonial-header">
               <div class="testimonial-avatar">AB</div>
               <div class="testimonial-info">
@@ -1393,9 +1431,9 @@
             </div>
             <div class="testimonial-stars">★★★★★</div>
             <p class="testimonial-text">"A comunicação foi muito clara e o apoio trouxe mais organização para nossa rotina comercial."</p>
-          </div>
+          </article>
 
-          <div class="testimonial-card">
+          <article class="testimonial-card">
             <div class="testimonial-header">
               <div class="testimonial-avatar">CR</div>
               <div class="testimonial-info">
@@ -1405,9 +1443,9 @@
             </div>
             <div class="testimonial-stars">★★★★★</div>
             <p class="testimonial-text">"A proposta foi bem apresentada, o atendimento foi profissional e o processo ficou muito mais estruturado."</p>
-          </div>
+          </article>
 
-          <div class="testimonial-card">
+          <article class="testimonial-card">
             <div class="testimonial-header">
               <div class="testimonial-avatar">MF</div>
               <div class="testimonial-info">
@@ -1417,7 +1455,7 @@
             </div>
             <div class="testimonial-stars">★★★★★</div>
             <p class="testimonial-text">"A V C TECH nos ajudou a melhorar o posicionamento e a forma como apresentamos nossos serviços."</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1426,16 +1464,17 @@
       <div class="container">
         <div class="section-header">
           <h2>
-            <div class="section-icon">
+            <span class="section-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 16v-4M12 8h.01"></path>
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-.8.8-1.8 1.3-1.8 2.8"></path>
+                <path d="M12 17h.01"></path>
               </svg>
-            </div>
+            </span>
             Perguntas frequentes
           </h2>
           <p>
-            Informações rápidas para facilitar o primeiro contato.
+            Informações rápidas para facilitar o primeiro contato com a empresa.
           </p>
         </div>
 
@@ -1443,7 +1482,7 @@
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               <span>Como funciona o atendimento da V C TECH?</span>
-              <span class="faq-icon">▼</span>
+              <span class="faq-icon-arrow">▼</span>
             </button>
             <div class="faq-answer">
               <p>O primeiro contato pode ser feito por WhatsApp, e-mail ou formulário. A partir disso, entendemos a necessidade da empresa e alinhamos a melhor forma de atendimento.</p>
@@ -1453,7 +1492,7 @@
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               <span>Quais serviços a empresa pode apresentar?</span>
-              <span class="faq-icon">▼</span>
+              <span class="faq-icon-arrow">▼</span>
             </button>
             <div class="faq-answer">
               <p>A V C TECH atua com frentes ligadas a vendas, consultoria comercial, estrutura de comunicação, apoio estratégico e soluções tecnológicas aplicadas ao contexto empresarial.</p>
@@ -1463,20 +1502,20 @@
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               <span>O atendimento é apenas presencial?</span>
-              <span class="faq-icon">▼</span>
+              <span class="faq-icon-arrow">▼</span>
             </button>
             <div class="faq-answer">
-              <p>Não. O atendimento pode ocorrer de forma remota e também presencial, conforme a necessidade, disponibilidade e contexto do projeto.</p>
+              <p>Não. O atendimento pode ocorrer de forma remota e também presencialmente, conforme a necessidade, disponibilidade e contexto do projeto.</p>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-              <span>Como faço para solicitar uma proposta ou iniciar uma conversa?</span>
-              <span class="faq-icon">▼</span>
+              <span>Como posso solicitar atendimento ou iniciar uma conversa?</span>
+              <span class="faq-icon-arrow">▼</span>
             </button>
             <div class="faq-answer">
-              <p>Você pode entrar em contato diretamente pelo WhatsApp, enviar e-mail ou usar o formulário desta página. O retorno será feito pelos canais oficiais da empresa.</p>
+              <p>Você pode entrar em contato diretamente pelo WhatsApp, enviar e-mail ou utilizar o formulário desta página. O retorno será feito pelos canais oficiais da empresa.</p>
             </div>
           </div>
         </div>
@@ -1487,37 +1526,52 @@
       <div class="container">
         <div class="section-header">
           <h2>
-            <div class="section-icon">
+            <span class="section-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7l.5 2.2a2 2 0 0 1-.5 1.9L8.9 10a16 16 0 0 0 5.1 5.1l1.2-1.2a2 2 0 0 1 1.9-.5l2.2.5a2 2 0 0 1 1.7 2z"></path>
               </svg>
-            </div>
+            </span>
             Vamos conversar?
           </h2>
           <p>
-            Entre em contato pelos canais oficiais da empresa.
+            Entre em contato pelos canais oficiais da empresa para apresentar sua demanda ou iniciar uma conversa comercial.
           </p>
         </div>
 
         <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <article class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M20 11.5A8 8 0 0 1 8.3 18.7L4 20l1.3-4.1A8 8 0 1 1 20 11.5z"></path>
+                <path d="M9.5 9.5c.3 1.2 1.5 2.6 2.7 3.3 1.2.7 2.5 1 3.3.8"></path>
+              </svg>
+            </div>
             <div class="contact-label">WhatsApp</div>
             <div class="contact-value">
               <a href="https://wa.me/554797701300" target="_blank" rel="noopener noreferrer">+55 47 9770-1300</a>
             </div>
-          </div>
+          </article>
 
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <article class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 5h16v14H4z"></path>
+                <path d="M4 7l8 6 8-6"></path>
+              </svg>
+            </div>
             <div class="contact-label">E-mail</div>
             <div class="contact-value">
               <a href="mailto:adm@vctechsc.com">adm@vctechsc.com</a>
             </div>
-          </div>
+          </article>
 
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <article class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"></path>
+                <circle cx="12" cy="10" r="2.5"></circle>
+              </svg>
+            </div>
             <div class="contact-label">Endereço Comercial</div>
             <div class="contact-value">
               Av Osmar de Souza Nunes, 365<br>
@@ -1525,20 +1579,26 @@
               Balneário Camboriú - SC<br>
               CEP 88.331-070
             </div>
-          </div>
+          </article>
         </div>
 
         <p class="contact-note">
-          Atendimento institucional e comercial mediante contato pelos canais oficiais da empresa.
+          Atendimento institucional e comercial realizado mediante contato pelos canais oficiais da empresa.
         </p>
 
         <div class="cta-box">
           <h3>Fale com a V C TECH</h3>
           <p>
-            Se você deseja apresentar uma demanda, solicitar atendimento ou iniciar uma conversa comercial, envie sua mensagem pelos canais abaixo.
+            Se você deseja apresentar uma demanda, solicitar atendimento, alinhar uma proposta ou iniciar um relacionamento comercial, envie sua mensagem pelos canais oficiais da empresa.
           </p>
           <button class="btn btn-primary" onclick="openContactModal()">
-            <i class="fas fa-paper-plane"></i> Enviar Mensagem Agora
+            <span class="btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M22 2L11 13"></path>
+                <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+              </svg>
+            </span>
+            Enviar Mensagem Agora
           </button>
         </div>
       </div>
@@ -1549,7 +1609,7 @@
     <div class="modal-content">
       <h2>Vamos começar a conversa</h2>
       <p class="modal-subtitle">
-        Preencha os dados abaixo para enviar sua mensagem de forma rápida e organizada.
+        Preencha os dados abaixo para enviar sua mensagem de forma rápida, clara e organizada.
       </p>
 
       <form id="contactForm" onsubmit="handleSubmit(event)">
@@ -1601,7 +1661,7 @@
         <div>
           <h4>V C TECH - VENDAS, CONSULTORIA & TECNOLOGIA LTDA</h4>
           <p>CNPJ: 58.313.203/0001-18</p>
-          <p>Empresa com situação cadastral ativa</p>
+          <p>Empresa com situação cadastral ativa.</p>
           <p>Atuação em vendas, consultoria comercial e tecnologia.</p>
 
           <div class="footer-links">
@@ -1695,14 +1755,7 @@
         return;
       }
 
-      const msg =
-`Olá! Meu nome é ${name}.
-
-E-mail: ${email}
-Telefone: ${phone || 'Não informado'}
-
-Demanda: ${message}`;
-
+      const msg = `Olá! Meu nome é ${name}.\n\nE-mail: ${email}\nTelefone: ${phone || 'Não informado'}\n\nDemanda: ${message}`;
       window.open(`https://wa.me/554797701300?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
       closeContactModal();
       form.reset();
