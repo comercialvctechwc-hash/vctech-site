@@ -416,7 +416,7 @@
       color: var(--text-secondary);
       font-size: 18px;
       line-height: 1.85;
-      margin-bottom: 36px;
+      margin-bottom: 30px;
     }
 
     .hero-authority {
@@ -424,6 +424,7 @@
       flex-wrap: wrap;
       gap: 14px;
       margin-bottom: 36px;
+      max-width: 760px;
     }
 
     .authority-pill {
@@ -534,8 +535,7 @@
     .contact-icon,
     .btn-icon,
     .card-toggle-icon,
-    .wa-fab-icon,
-    .wa-quick-icon {
+    .wa-fab-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -555,8 +555,7 @@
     .contact-icon svg,
     .btn-icon svg,
     .card-toggle-icon svg,
-    .wa-fab-icon svg,
-    .wa-quick-icon svg {
+    .wa-fab-icon svg {
       width: 100%;
       height: 100%;
       stroke: currentColor;
@@ -618,8 +617,7 @@
     .testimonial-card,
     .faq-item,
     .contact-item,
-    .cta-box,
-    .wa-sheet-card {
+    .cta-box {
       background: linear-gradient(135deg, rgba(37,99,235,0.07), rgba(59,130,246,0.06));
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
@@ -974,7 +972,7 @@
       backdrop-filter: blur(6px);
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 12px;
     }
 
     .modal.active {
@@ -984,15 +982,24 @@
 
     .modal-content {
       width: 100%;
-      max-width: 560px;
-      max-height: 90vh;
+      max-width: 640px;
+      max-height: min(92vh, 900px);
       overflow-y: auto;
       background: #0d0d12;
       border: 1px solid var(--border-color);
       border-radius: 24px;
-      padding: 34px;
+      padding: 30px;
       box-shadow: 0 28px 60px rgba(0,0,0,0.5);
       animation: slideUp 0.25s ease;
+    }
+
+    .modal-content::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.12);
+      border-radius: 999px;
     }
 
     .modal-content h2 {
@@ -1005,11 +1012,11 @@
       color: var(--text-secondary);
       font-size: 15px;
       line-height: 1.8;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .form-group label {
@@ -1041,7 +1048,7 @@
     }
 
     .privacy-note {
-      margin-top: 4px;
+      margin-top: 6px;
       padding: 14px 16px;
       border-radius: 14px;
       background: rgba(255,255,255,0.03);
@@ -1110,168 +1117,12 @@
       border: 1px solid var(--border-color);
     }
 
-    .wa-sheet {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 1100;
-      background: rgba(0,0,0,0.72);
-      backdrop-filter: blur(5px);
-      align-items: flex-end;
-      justify-content: flex-end;
-      padding: 20px;
-    }
-
-    .wa-sheet.active {
-      display: flex;
-      animation: fadeIn 0.22s ease;
-    }
-
-    .wa-sheet-card {
-      width: 100%;
-      max-width: 430px;
-      padding: 24px;
-      animation: slideUp 0.22s ease;
-      border-radius: 24px;
-      background: #0d0d12;
-    }
-
-    .wa-sheet-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .wa-sheet-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .wa-sheet-badge {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent-whatsapp), var(--accent-whatsapp-dark));
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 12px 24px rgba(37, 211, 102, 0.22);
-      flex-shrink: 0;
-    }
-
-    .wa-sheet-badge svg {
-      width: 22px;
-      height: 22px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .wa-sheet-title h3 {
-      font-size: 22px;
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-
-    .wa-sheet-title p {
-      color: var(--text-muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .wa-sheet-close {
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      border: 1px solid var(--border-color);
-      background: rgba(255,255,255,0.04);
-      color: var(--text-secondary);
-      cursor: pointer;
-      font-size: 18px;
-      line-height: 1;
-    }
-
-    .wa-quick-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 18px 0 20px;
-    }
-
-    .wa-quick-btn {
-      border: 1px solid var(--border-color);
-      background: rgba(255,255,255,0.03);
-      color: var(--text-secondary);
-      border-radius: 14px;
-      padding: 12px 12px;
-      text-align: left;
-      cursor: pointer;
-      transition: 0.25s ease;
-      font: inherit;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      min-height: 68px;
-    }
-
-    .wa-quick-btn:hover,
-    .wa-quick-btn.active {
-      border-color: rgba(37, 211, 102, 0.35);
-      background: rgba(37, 211, 102, 0.08);
-      color: var(--text-primary);
-    }
-
-    .wa-quick-icon {
-      width: 18px;
-      height: 18px;
-      color: var(--accent-whatsapp);
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-
-    .wa-sheet .form-group {
-      margin-bottom: 16px;
-    }
-
-    .wa-help-text {
-      color: var(--text-muted);
-      font-size: 12px;
-      line-height: 1.6;
-      margin-top: 4px;
-    }
-
-    .wa-submit {
-      width: 100%;
-      margin-top: 12px;
-      padding: 14px 16px;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 700;
-      color: white;
-      background: linear-gradient(135deg, var(--accent-whatsapp), var(--accent-whatsapp-dark));
-      box-shadow: 0 14px 26px rgba(37, 211, 102, 0.22);
-      transition: 0.25s ease;
-    }
-
-    .wa-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 30px rgba(37, 211, 102, 0.28);
-    }
-
     .wa-floating-btn {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
-      width: 58px;
-      height: 58px;
+      right: 14px;
+      bottom: 14px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       border: none;
       background: linear-gradient(135deg, var(--accent-whatsapp), var(--accent-whatsapp-dark));
@@ -1291,8 +1142,8 @@
     }
 
     .wa-fab-icon {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       color: white;
     }
 
@@ -1439,36 +1290,32 @@
       .contact-item,
       .cta-box,
       .modal-content {
-        padding: 26px;
+        padding: 22px;
       }
 
-      .wa-sheet {
-        padding: 12px;
-        align-items: flex-end;
-        justify-content: stretch;
+      .form-actions {
+        flex-direction: column;
       }
 
-      .wa-sheet-card {
-        max-width: none;
+      .form-actions button {
         width: 100%;
-        padding: 20px;
-        border-radius: 22px;
       }
 
-      .wa-quick-grid {
-        grid-template-columns: 1fr;
+      .authority-pill {
+        font-size: 13px;
+        padding: 10px 14px;
       }
 
       .wa-floating-btn {
-        width: 54px;
-        height: 54px;
-        right: 14px;
-        bottom: 14px;
+        right: 12px;
+        bottom: 12px;
+        width: 52px;
+        height: 52px;
       }
 
       .wa-fab-icon {
-        width: 24px;
-        height: 24px;
+        width: 23px;
+        height: 23px;
       }
     }
 
@@ -1546,12 +1393,10 @@
           <div class="hero-authority">
             <div class="authority-pill">Atuação institucional e comercial</div>
             <div class="authority-pill">Presença profissional para empresas</div>
-            <div class="authority-pill">Balneário Camboriú • SC</div>
-            <div class="authority-pill">CNPJ ativo • canais oficiais</div>
           </div>
 
           <div class="hero-cta">
-            <button class="btn btn-primary" onclick="openWhatsAppSheet()">
+            <button class="btn btn-primary" onclick="openContactModal('whatsapp')">
               <span class="btn-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <path d="M20 11.5A8 8 0 0 1 8.3 18.7L4 20l1.3-4.1A8 8 0 1 1 20 11.5z"></path>
@@ -1561,7 +1406,7 @@
               Falar no WhatsApp
             </button>
 
-            <button class="btn btn-secondary" onclick="openContactModal()">
+            <button class="btn btn-secondary" onclick="openContactModal('email')">
               <span class="btn-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <path d="M4 5h16v14H4z"></path>
@@ -2032,7 +1877,7 @@
             </div>
             <div class="contact-label">WhatsApp</div>
             <div class="contact-value">
-              <button class="btn btn-secondary" style="padding: 10px 16px; margin-top: 6px;" onclick="openWhatsAppSheet()">
+              <button class="btn btn-secondary" style="padding: 10px 16px; margin-top: 6px;" onclick="openContactModal('whatsapp')">
                 Abrir atendimento
               </button>
             </div>
@@ -2086,7 +1931,7 @@
             Se você deseja apresentar uma demanda, solicitar atendimento, alinhar uma proposta ou iniciar um relacionamento comercial, escolha o canal mais confortável para você.
           </p>
           <div class="hero-cta" style="justify-content:center;">
-            <button class="btn btn-primary" onclick="openWhatsAppSheet()">
+            <button class="btn btn-primary" onclick="openContactModal('whatsapp')">
               <span class="btn-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <path d="M20 11.5A8 8 0 0 1 8.3 18.7L4 20l1.3-4.1A8 8 0 1 1 20 11.5z"></path>
@@ -2095,7 +1940,8 @@
               </span>
               Atendimento via WhatsApp
             </button>
-            <button class="btn btn-secondary" onclick="openContactModal()">
+
+            <button class="btn btn-secondary" onclick="openContactModal('email')">
               <span class="btn-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <path d="M4 5h16v14H4z"></path>
@@ -2112,139 +1958,37 @@
 
   <div id="contactModal" class="modal" aria-hidden="true">
     <div class="modal-content">
-      <h2>Vamos começar a conversa</h2>
-      <p class="modal-subtitle">
-        Preencha os dados abaixo para enviar sua mensagem de forma rápida, clara e organizada.
+      <h2 id="contactModalTitle">Fale com a V C TECH</h2>
+      <p class="modal-subtitle" id="contactModalSubtitle">
+        Preencha os dados abaixo para iniciar seu atendimento.
       </p>
 
-      <form id="contactForm" onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <label for="name">Seu nome *</label>
-          <input type="text" id="name" name="name" required>
-        </div>
+      <form id="contactFormUnified">
+        <input type="hidden" id="contactChannel" value="whatsapp">
 
         <div class="form-group">
-          <label for="email">Seu e-mail *</label>
-          <input type="email" id="email" name="email" required>
+          <label for="contactName">Seu nome *</label>
+          <input type="text" id="contactName" required>
         </div>
 
         <div class="form-group">
-          <label for="phone">Telefone / WhatsApp</label>
-          <input type="tel" id="phone" name="phone">
+          <label for="contactCompany">Empresa</label>
+          <input type="text" id="contactCompany">
         </div>
 
         <div class="form-group">
-          <label for="message">Qual é sua demanda? *</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-
-        <div class="privacy-note">
-          Seus dados serão usados apenas para contato comercial, atendimento e retorno da sua solicitação, conforme nossa Política de Privacidade.
-        </div>
-
-        <label class="privacy-check" for="privacyConsent">
-          <input type="checkbox" id="privacyConsent" required>
-          <span>
-            Li e concordo com a
-            <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>
-            e com os
-            <a href="terms-of-service.html" target="_blank" rel="noopener noreferrer">Termos de Serviço</a>.
-          </span>
-        </label>
-
-        <div class="form-actions">
-          <button type="submit" class="btn-form-submit">Enviar para WhatsApp</button>
-          <button type="button" class="btn-form-cancel" onclick="closeContactModal()">Cancelar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div id="waSheet" class="wa-sheet" aria-hidden="true">
-    <div class="wa-sheet-card">
-      <div class="wa-sheet-header">
-        <div class="wa-sheet-title">
-          <div class="wa-sheet-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M20 11.5A8 8 0 0 1 8.3 18.7L4 20l1.3-4.1A8 8 0 1 1 20 11.5z"></path>
-              <path d="M9.5 9.5c.3 1.2 1.5 2.6 2.7 3.3 1.2.7 2.5 1 3.3.8"></path>
-            </svg>
-          </div>
-          <div>
-            <h3>Fale com a V C TECH</h3>
-            <p>Escolha um assunto e já inicie o atendimento no WhatsApp com uma mensagem mais organizada.</p>
-          </div>
-        </div>
-
-        <button class="wa-sheet-close" onclick="closeWhatsAppSheet()" aria-label="Fechar atendimento">×</button>
-      </div>
-
-      <div class="wa-quick-grid">
-        <button type="button" class="wa-quick-btn" data-subject="Quero conhecer os serviços">
-          <span class="wa-quick-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 6h16v12H4z"></path>
-              <path d="M8 10h8"></path>
-              <path d="M8 14h5"></path>
-            </svg>
-          </span>
-          <span>Quero conhecer os serviços</span>
-        </button>
-
-        <button type="button" class="wa-quick-btn" data-subject="Quero solicitar uma proposta">
-          <span class="wa-quick-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M7 4h10l2 2v14H5V6l2-2z"></path>
-              <path d="M9 9h6"></path>
-              <path d="M9 13h6"></path>
-            </svg>
-          </span>
-          <span>Quero solicitar uma proposta</span>
-        </button>
-
-        <button type="button" class="wa-quick-btn" data-subject="Quero falar sobre consultoria comercial">
-          <span class="wa-quick-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 20V6"></path>
-              <path d="M10 20V10"></path>
-              <path d="M16 20V13"></path>
-              <path d="M22 20V4"></path>
-            </svg>
-          </span>
-          <span>Quero falar sobre consultoria comercial</span>
-        </button>
-
-        <button type="button" class="wa-quick-btn" data-subject="Quero falar sobre tecnologia e estrutura digital">
-          <span class="wa-quick-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 6h16v12H4z"></path>
-              <path d="M9 18v2"></path>
-              <path d="M15 18v2"></path>
-            </svg>
-          </span>
-          <span>Quero falar sobre tecnologia e estrutura digital</span>
-        </button>
-      </div>
-
-      <form id="whatsAppLeadForm">
-        <div class="form-group">
-          <label for="waName">Seu nome *</label>
-          <input type="text" id="waName" required>
+          <label for="contactPhone">Telefone / WhatsApp</label>
+          <input type="tel" id="contactPhone">
         </div>
 
         <div class="form-group">
-          <label for="waCompany">Empresa</label>
-          <input type="text" id="waCompany">
+          <label for="contactEmail">E-mail</label>
+          <input type="email" id="contactEmail">
         </div>
 
         <div class="form-group">
-          <label for="waPhone">Telefone / WhatsApp</label>
-          <input type="tel" id="waPhone">
-        </div>
-
-        <div class="form-group">
-          <label for="waSubject">Assunto *</label>
-          <select id="waSubject" required>
+          <label for="contactSubject">Assunto *</label>
+          <select id="contactSubject" required>
             <option value="">Selecione um assunto</option>
             <option value="Quero conhecer os serviços">Quero conhecer os serviços</option>
             <option value="Quero solicitar uma proposta">Quero solicitar uma proposta</option>
@@ -2255,12 +1999,28 @@
         </div>
 
         <div class="form-group">
-          <label for="waMessage">Mensagem complementar</label>
-          <textarea id="waMessage" rows="4" placeholder="Se quiser, descreva brevemente sua necessidade..."></textarea>
-          <div class="wa-help-text">Você pode preencher só o básico e continuar no WhatsApp.</div>
+          <label for="contactMessage">Mensagem complementar</label>
+          <textarea id="contactMessage" rows="5" placeholder="Se quiser, descreva brevemente sua necessidade..."></textarea>
         </div>
 
-        <button type="submit" class="wa-submit">Continuar no WhatsApp</button>
+        <div class="privacy-note">
+          Seus dados serão usados apenas para contato comercial, atendimento e retorno da sua solicitação.
+        </div>
+
+        <label class="privacy-check" for="privacyConsentUnified">
+          <input type="checkbox" id="privacyConsentUnified" required>
+          <span>
+            Li e concordo com a
+            <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>
+            e com os
+            <a href="terms-of-service.html" target="_blank" rel="noopener noreferrer">Termos de Serviço</a>.
+          </span>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-form-submit" id="contactSubmitBtn">Continuar no WhatsApp</button>
+          <button type="button" class="btn-form-cancel" onclick="closeContactModal()">Cancelar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -2268,7 +2028,7 @@
   <button
     type="button"
     class="wa-floating-btn"
-    onclick="openWhatsAppSheet()"
+    onclick="openContactModal('whatsapp')"
     aria-label="Abrir atendimento no WhatsApp"
     title="Abrir atendimento no WhatsApp"
   >
@@ -2315,13 +2075,13 @@
     const mobileMenu = document.getElementById('mobileMenu');
     const nav = document.getElementById('navBar');
     const modal = document.getElementById('contactModal');
-    const form = document.getElementById('contactForm');
+    const unifiedForm = document.getElementById('contactFormUnified');
     const interactiveCards = document.querySelectorAll('.interactive-card');
 
-    const waSheet = document.getElementById('waSheet');
-    const waForm = document.getElementById('whatsAppLeadForm');
-    const waSubject = document.getElementById('waSubject');
-    const waQuickButtons = document.querySelectorAll('.wa-quick-btn');
+    const contactChannel = document.getElementById('contactChannel');
+    const contactModalTitle = document.getElementById('contactModalTitle');
+    const contactModalSubtitle = document.getElementById('contactModalSubtitle');
+    const contactSubmitBtn = document.getElementById('contactSubmitBtn');
 
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
@@ -2349,7 +2109,19 @@
       item.classList.toggle('active');
     }
 
-    function openContactModal() {
+    function openContactModal(channel = 'whatsapp') {
+      contactChannel.value = channel;
+
+      if (channel === 'email') {
+        contactModalTitle.textContent = 'Envie sua mensagem';
+        contactModalSubtitle.textContent = 'Preencha os dados abaixo para enviar sua solicitação por e-mail.';
+        contactSubmitBtn.textContent = 'Enviar por e-mail';
+      } else {
+        contactModalTitle.textContent = 'Fale com a V C TECH';
+        contactModalSubtitle.textContent = 'Preencha os dados abaixo para iniciar seu atendimento no WhatsApp.';
+        contactSubmitBtn.textContent = 'Continuar no WhatsApp';
+      }
+
       modal.classList.add('active');
       modal.setAttribute('aria-hidden', 'false');
       closeMobileMenu();
@@ -2360,30 +2132,15 @@
       modal.setAttribute('aria-hidden', 'true');
     }
 
-    function openWhatsAppSheet() {
-      waSheet.classList.add('active');
-      waSheet.setAttribute('aria-hidden', 'false');
-      closeMobileMenu();
-    }
-
-    function closeWhatsAppSheet() {
-      waSheet.classList.remove('active');
-      waSheet.setAttribute('aria-hidden', 'true');
-    }
-
     window.addEventListener('click', (e) => {
       if (e.target === modal) {
         closeContactModal();
-      }
-      if (e.target === waSheet) {
-        closeWhatsAppSheet();
       }
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeContactModal();
-        closeWhatsAppSheet();
       }
     });
 
@@ -2402,58 +2159,43 @@
       });
     });
 
-    waQuickButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        waQuickButtons.forEach((btn) => btn.classList.remove('active'));
-        button.classList.add('active');
-        waSubject.value = button.dataset.subject;
-      });
-    });
-
-    function handleSubmit(e) {
+    unifiedForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const privacyConsent = document.getElementById('privacyConsent');
+      const name = document.getElementById('contactName').value.trim();
+      const company = document.getElementById('contactCompany').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const subject = document.getElementById('contactSubject').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+      const consent = document.getElementById('privacyConsentUnified').checked;
+      const channel = contactChannel.value;
 
-      if (!privacyConsent.checked) {
+      if (!consent) {
         alert('É necessário concordar com a Política de Privacidade e os Termos de Serviço.');
         return;
       }
 
-      const msg = `Olá! Meu nome é ${name}.\n\nE-mail: ${email}\nTelefone: ${phone || 'Não informado'}\n\nDemanda: ${message}`;
-      window.open(`https://wa.me/554797701300?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
-      closeContactModal();
-      form.reset();
-    }
-
-    waForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('waName').value.trim();
-      const company = document.getElementById('waCompany').value.trim();
-      const phone = document.getElementById('waPhone').value.trim();
-      const subject = document.getElementById('waSubject').value.trim();
-      const message = document.getElementById('waMessage').value.trim();
-
       if (!name || !subject) {
-        alert('Preencha pelo menos seu nome e o assunto do atendimento.');
+        alert('Preencha pelo menos seu nome e o assunto.');
         return;
       }
 
-      const msg =
+      const finalMessage =
 `Olá! Meu nome é ${name}.
-${company ? `Empresa: ${company}\n` : ''}${phone ? `Telefone: ${phone}\n` : ''}Assunto: ${subject}
+${company ? `Empresa: ${company}\n` : ''}${phone ? `Telefone: ${phone}\n` : ''}${email ? `E-mail: ${email}\n` : ''}Assunto: ${subject}
 
 ${message ? `Mensagem: ${message}` : 'Gostaria de mais informações sobre esse assunto.'}`;
 
-      window.open(`https://wa.me/554797701300?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
-      closeWhatsAppSheet();
-      waForm.reset();
-      waQuickButtons.forEach((btn) => btn.classList.remove('active'));
+      if (channel === 'email') {
+        const mailto = `mailto:adm@vctechsc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(finalMessage)}`;
+        window.location.href = mailto;
+      } else {
+        window.open(`https://wa.me/554797701300?text=${encodeURIComponent(finalMessage)}`, '_blank', 'noopener');
+      }
+
+      closeContactModal();
+      unifiedForm.reset();
     });
   </script>
 </body>
