@@ -16,11 +16,9 @@
       --bg-primary: #050505;
       --bg-secondary: #0f0f0f;
       --bg-tertiary: #171717;
-      --bg-card: rgba(19, 28, 52, 0.55);
       --accent-primary: #2563eb;
       --accent-secondary: #3b82f6;
       --accent-light: #60a5fa;
-      --accent-soft: rgba(59, 130, 246, 0.16);
       --text-primary: #f8fafc;
       --text-secondary: #cbd5e1;
       --text-muted: #94a3b8;
@@ -83,7 +81,7 @@
         transparent
       );
       filter: blur(0.4px);
-      box-shadow: 0 0 24px rgba(37, 99, 235, 0.8), 0 0 50px rgba(255,255,255,0.18);
+      box-shadow: 0 0 24px rgba(37,99,235,0.8), 0 0 50px rgba(255,255,255,0.18);
       animation: streak 8s linear infinite;
       opacity: 0;
     }
@@ -388,7 +386,6 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
-      transition: none;
     }
 
     .btn:hover::before {
@@ -465,7 +462,8 @@
     .card-badge svg,
     .diff-icon svg,
     .contact-icon svg,
-    .btn-icon svg {
+    .btn-icon svg,
+    .card-toggle-icon svg {
       width: 100%;
       height: 100%;
       stroke: currentColor;
@@ -635,6 +633,81 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      cursor: pointer;
+    }
+
+    .interactive-card {
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .card-main {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card-topline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-toggle-icon {
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-light);
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(96,165,250,0.18);
+      transition: transform 0.3s ease, background 0.3s ease;
+      margin-top: 4px;
+    }
+
+    .interactive-card.active .card-toggle-icon,
+    .interactive-card:hover .card-toggle-icon {
+      transform: rotate(180deg);
+      background: rgba(37,99,235,0.18);
+    }
+
+    .card-extra {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.35s ease, margin-top 0.35s ease;
+      opacity: 0;
+      margin-top: 0;
+    }
+
+    .interactive-card:hover .card-extra,
+    .interactive-card.active .card-extra {
+      max-height: 220px;
+      opacity: 1;
+      margin-top: 16px;
+    }
+
+    .card-extra-content {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .card-extra-content strong {
+      display: block;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
     }
 
     .portfolio-image {
@@ -1202,40 +1275,85 @@
     <section class="section" aria-label="Destaques da V C TECH">
       <div class="container">
         <div class="highlights-grid">
-          <article class="card">
-            <div class="card-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M3 21h18"></path>
-                <path d="M5 21V7l7-4 7 4v14"></path>
-                <path d="M9 11h.01"></path>
-                <path d="M15 11h.01"></path>
-              </svg>
+          <article class="card interactive-card" tabindex="0">
+            <div class="card-main">
+              <div class="card-topline">
+                <div class="card-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 21h18"></path>
+                    <path d="M5 21V7l7-4 7 4v14"></path>
+                    <path d="M9 11h.01"></path>
+                    <path d="M15 11h.01"></path>
+                  </svg>
+                </div>
+                <div class="card-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+              <h3>Presença profissional</h3>
+              <p>Atuação voltada a empresas que precisam fortalecer sua comunicação, sua apresentação comercial e sua imagem institucional.</p>
+              <div class="card-extra">
+                <div class="card-extra-content">
+                  <strong>Complemento</strong>
+                  Isso ajuda a empresa a transmitir mais confiança, melhorar a primeira impressão e alinhar melhor sua apresentação com o nível do serviço que oferece.
+                </div>
+              </div>
             </div>
-            <h3>Presença profissional</h3>
-            <p>Atuação voltada a empresas que precisam fortalecer sua comunicação, sua apresentação comercial e sua imagem institucional.</p>
           </article>
 
-          <article class="card">
-            <div class="card-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 12l3 3 5-6"></path>
-                <path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"></path>
-              </svg>
+          <article class="card interactive-card" tabindex="0">
+            <div class="card-main">
+              <div class="card-topline">
+                <div class="card-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M8 12l3 3 5-6"></path>
+                    <path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"></path>
+                  </svg>
+                </div>
+                <div class="card-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+              <h3>Clareza no atendimento</h3>
+              <p>Relacionamento direto, comunicação objetiva e postura profissional para facilitar o primeiro contato e a continuidade da conversa.</p>
+              <div class="card-extra">
+                <div class="card-extra-content">
+                  <strong>Complemento</strong>
+                  Um atendimento claro reduz ruído, acelera entendimento da demanda e melhora a percepção de organização e seriedade da empresa.
+                </div>
+              </div>
             </div>
-            <h3>Clareza no atendimento</h3>
-            <p>Relacionamento direto, comunicação objetiva e postura profissional para facilitar o primeiro contato e a continuidade da conversa.</p>
           </article>
 
-          <article class="card">
-            <div class="card-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M4 6h16v12H4z"></path>
-                <path d="M8 10h8"></path>
-                <path d="M8 14h5"></path>
-              </svg>
+          <article class="card interactive-card" tabindex="0">
+            <div class="card-main">
+              <div class="card-topline">
+                <div class="card-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 6h16v12H4z"></path>
+                    <path d="M8 10h8"></path>
+                    <path d="M8 14h5"></path>
+                  </svg>
+                </div>
+                <div class="card-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+              <h3>Soluções integradas</h3>
+              <p>Vendas, consultoria comercial e tecnologia alinhadas para gerar mais organização, estrutura e confiança para o negócio.</p>
+              <div class="card-extra">
+                <div class="card-extra-content">
+                  <strong>Complemento</strong>
+                  A integração entre essas frentes evita comunicação fragmentada e ajuda a empresa a ter mais coerência no atendimento e no posicionamento.
+                </div>
+              </div>
             </div>
-            <h3>Soluções integradas</h3>
-            <p>Vendas, consultoria comercial e tecnologia alinhadas para gerar mais organização, estrutura e confiança para o negócio.</p>
           </article>
         </div>
       </div>
@@ -1320,27 +1438,66 @@
         </div>
 
         <div class="portfolio-grid">
-          <article class="portfolio-card">
+          <article class="portfolio-card interactive-card" tabindex="0">
             <div class="portfolio-image">Consultoria comercial e reorganização de processos</div>
             <div class="portfolio-content">
-              <h3>Reestruturação comercial</h3>
+              <div class="card-topline">
+                <h3>Reestruturação comercial</h3>
+                <div class="card-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
               <p>Mapeamento de fluxo, apoio ao atendimento, melhoria de apresentação e organização da frente comercial da empresa.</p>
+              <div class="card-extra">
+                <div class="card-extra-content">
+                  <strong>Mais detalhes</strong>
+                  Pode incluir revisão de abordagem, ajuste na comunicação com clientes, padronização de processo comercial e fortalecimento da apresentação do serviço.
+                </div>
+              </div>
             </div>
           </article>
 
-          <article class="portfolio-card">
+          <article class="portfolio-card interactive-card" tabindex="0">
             <div class="portfolio-image">Posicionamento institucional e presença profissional</div>
             <div class="portfolio-content">
-              <h3>Gestão de presença comercial</h3>
+              <div class="card-topline">
+                <h3>Gestão de presença comercial</h3>
+                <div class="card-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
               <p>Fortalecimento da comunicação, da apresentação dos serviços e da percepção profissional da marca diante do cliente.</p>
+              <div class="card-extra">
+                <div class="card-extra-content">
+                  <strong>Mais detalhes</strong>
+                  Essa frente ajuda a empresa a parecer mais organizada, mais confiável e mais preparada para converter o interesse em relacionamento comercial.
+                </div>
+              </div>
             </div>
           </article>
 
-          <article class="portfolio-card">
+          <article class="portfolio-card interactive-card" tabindex="0">
             <div class="portfolio-image">Apoio tecnológico e estrutura digital</div>
             <div class="portfolio-content">
-              <h3>Integração tecnológica</h3>
+              <div class="card-topline">
+                <h3>Integração tecnológica</h3>
+                <div class="card-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
               <p>Organização de ferramentas, apoio digital e melhoria operacional alinhados à realidade e à necessidade de cada negócio.</p>
+              <div class="card-extra">
+                <div class="card-extra-content">
+                  <strong>Mais detalhes</strong>
+                  Pode envolver estruturação de canais, melhoria da experiência de contato, organização de rotinas e apoio à presença digital da empresa.
+                </div>
+              </div>
             </div>
           </article>
         </div>
@@ -1364,39 +1521,72 @@
         </div>
 
         <div class="diff-grid">
-          <article class="diff-card">
-            <div class="diff-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M13 2L4 14h6l-1 8 9-12h-6z"></path>
-              </svg>
+          <article class="diff-card interactive-card" tabindex="0">
+            <div class="card-main">
+              <div class="diff-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M13 2L4 14h6l-1 8 9-12h-6z"></path>
+                </svg>
+              </div>
+              <div class="card-topline" style="justify-content:center;">
+                <h3>Agilidade no contato</h3>
+                <div class="card-toggle-icon" aria-hidden="true" style="position:absolute; right:0; top:0; margin:0;"></div>
+              </div>
+              <p>Comunicação direta, objetiva e profissional para facilitar o início do relacionamento e o avanço da conversa comercial.</p>
+              <div class="card-extra">
+                <div class="card-extra-content">
+                  <strong>Complemento</strong>
+                  Agilidade aqui não é pressa: é responder com clareza, reduzir espera desnecessária e manter a conversa organizada do começo ao fim.
+                </div>
+              </div>
             </div>
-            <h3>Agilidade no contato</h3>
-            <p>Comunicação direta, objetiva e profissional para facilitar o início do relacionamento e o avanço da conversa comercial.</p>
           </article>
 
-          <article class="diff-card">
-            <div class="diff-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M4 20V6"></path>
-                <path d="M10 20V10"></path>
-                <path d="M16 20V13"></path>
-                <path d="M22 20V4"></path>
-              </svg>
+          <article class="diff-card interactive-card" tabindex="0">
+            <div class="card-main">
+              <div class="diff-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 20V6"></path>
+                  <path d="M10 20V10"></path>
+                  <path d="M16 20V13"></path>
+                  <path d="M22 20V4"></path>
+                </svg>
+              </div>
+              <div class="card-topline" style="justify-content:center;">
+                <h3>Visão estratégica</h3>
+                <div class="card-toggle-icon" aria-hidden="true" style="position:absolute; right:0; top:0; margin:0;"></div>
+              </div>
+              <p>Atuação pensada para fortalecer apresentação, posicionamento, clareza comercial e organização da empresa.</p>
+              <div class="card-extra">
+                <div class="card-extra-content">
+                  <strong>Complemento</strong>
+                  O foco está em coerência entre o que a empresa oferece, como ela se apresenta e como ela conduz o relacionamento com o cliente.
+                </div>
+              </div>
             </div>
-            <h3>Visão estratégica</h3>
-            <p>Atuação pensada para fortalecer apresentação, posicionamento, clareza comercial e organização da empresa.</p>
           </article>
 
-          <article class="diff-card">
-            <div class="diff-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 12c1.2-1.6 2.4-2.4 4-2.4s2.8.8 4 2.4"></path>
-                <path d="M5 12c2-3.2 4.2-4.8 7-4.8s5 1.6 7 4.8"></path>
-                <path d="M9 15c1 .8 2 .8 3 .8s2 0 3-.8"></path>
-              </svg>
+          <article class="diff-card interactive-card" tabindex="0">
+            <div class="card-main">
+              <div class="diff-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 12c1.2-1.6 2.4-2.4 4-2.4s2.8.8 4 2.4"></path>
+                  <path d="M5 12c2-3.2 4.2-4.8 7-4.8s5 1.6 7 4.8"></path>
+                  <path d="M9 15c1 .8 2 .8 3 .8s2 0 3-.8"></path>
+                </svg>
+              </div>
+              <div class="card-topline" style="justify-content:center;">
+                <h3>Parceria profissional</h3>
+                <div class="card-toggle-icon" aria-hidden="true" style="position:absolute; right:0; top:0; margin:0;"></div>
+              </div>
+              <p>Relacionamento construído com seriedade, atenção ao detalhe e foco em soluções adequadas ao contexto de cada empresa.</p>
+              <div class="card-extra">
+                <div class="card-extra-content">
+                  <strong>Complemento</strong>
+                  Isso significa entender a demanda com mais profundidade e evitar respostas genéricas, buscando uma condução mais alinhada à realidade de cada caso.
+                </div>
+              </div>
             </div>
-            <h3>Parceria profissional</h3>
-            <p>Relacionamento construído com seriedade, atenção ao detalhe e foco em soluções adequadas ao contexto de cada empresa.</p>
           </article>
         </div>
       </div>
@@ -1691,6 +1881,7 @@
     const nav = document.getElementById('navBar');
     const modal = document.getElementById('contactModal');
     const form = document.getElementById('contactForm');
+    const interactiveCards = document.querySelectorAll('.interactive-card');
 
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
@@ -1739,6 +1930,22 @@
       if (e.key === 'Escape') {
         closeContactModal();
       }
+    });
+
+    interactiveCards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        const clickedFaq = e.target.closest('.faq-question');
+        const clickedLink = e.target.closest('a, button, input, textarea');
+        if (clickedFaq || clickedLink) return;
+        card.classList.toggle('active');
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('active');
+        }
+      });
     });
 
     function handleSubmit(e) {
